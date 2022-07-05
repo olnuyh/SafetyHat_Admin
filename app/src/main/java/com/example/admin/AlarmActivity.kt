@@ -1,4 +1,6 @@
 package com.example.admin
 
-class AlarmActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class AlarmActivity : AppCompatActivity(){
 }

@@ -1,4 +1,6 @@
 package com.example.admin
 
-class LoginActivity {
+import androidx.appcompat.app.AppCompatActivity
+
+class LoginActivity : AppCompatActivity() {
 }
