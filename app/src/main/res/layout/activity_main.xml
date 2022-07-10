@@ -8,12 +8,12 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/main_area_btn"
+        android:id="@+id/main_list_btn"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="100dp"
-        android:text="근무자 구역 등록"
+        android:text="근무자 관리 페이지"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -24,7 +24,7 @@
         android:layout_marginTop="100dp"
         android:text="일정표"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/main_area_btn"
+        app:layout_constraintStart_toEndOf="@+id/main_list_btn"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
@@ -33,8 +33,8 @@
         android:layout_height="100dp"
         android:layout_marginTop="50dp"
         android:text="실시간 현장"
-        app:layout_constraintStart_toStartOf="@+id/main_area_btn"
-        app:layout_constraintTop_toBottomOf="@+id/main_area_btn"/>
+        app:layout_constraintStart_toStartOf="@+id/main_list_btn"
+        app:layout_constraintTop_toBottomOf="@+id/main_list_btn"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/main_salary_btn"

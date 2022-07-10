@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.admin">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
+    <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
+
     <application
+        android:hardwareAccelerated="true"
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -12,20 +17,26 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Admin">
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- qr코드 세로로 바꾸기.. -->
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+
+        <activity android:name="com.example.admin.MainActivity"/>
+        <activity android:name="com.example.admin.ListActivity"/>
         <activity android:name="com.example.admin.AlarmActivity"/>
         <activity android:name="com.example.admin.AreaActivity"/>
         <activity android:name="com.example.admin.CalendarActivity"/>
         <activity android:name="com.example.admin.CctvActivity"/>
-        <activity android:name="com.example.admin.LoginActivity"/>
         <activity android:name="com.example.admin.NotificationActivity"/>
         <activity android:name="com.example.admin.SalaryActivity"/>
 

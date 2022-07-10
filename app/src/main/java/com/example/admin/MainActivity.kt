@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
 
         getFCMToken()
 
-        binding.mainAreaBtn.setOnClickListener {
-            startActivity(Intent(this,AreaActivity::class.java))
+        binding.mainListBtn.setOnClickListener {
+            startActivity(Intent(this,ListActivity::class.java))
         }
 
         binding.mainCalendarBtn.setOnClickListener {

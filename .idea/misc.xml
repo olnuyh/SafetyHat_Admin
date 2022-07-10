@@ -7,10 +7,12 @@
         <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_area.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_calendar.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_cctv.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_list.xml" value="0.1716485507246377" />
         <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_main.xml" value="0.1716485507246377" />
         <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_notification.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/activity_salary.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/2022_Duksung/admin/app/src/main/res/layout/dialog_login.xml" value="0.1716485507246377" />
       </map>
     </option>
   </component>
