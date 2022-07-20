@@ -18,7 +18,7 @@
         android:theme="@style/Theme.Admin"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".LoginActivity"
+            android:name=".CalendarActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
         <activity android:name="com.example.admin.ListActivity"/>
         <activity android:name="com.example.admin.AlarmActivity"/>
         <activity android:name="com.example.admin.AreaActivity"/>
-        <activity android:name="com.example.admin.CalendarActivity"/>
+        <activity android:name="com.example.admin.LoginActivity"/>
         <activity android:name="com.example.admin.CctvActivity"/>
         <activity android:name="com.example.admin.NotificationActivity"/>
         <activity android:name="com.example.admin.SalaryActivity"/>
