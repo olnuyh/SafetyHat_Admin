@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getFCMToken()
+        //getFCMToken()
 
         binding.mainListBtn.setOnClickListener {
             startActivity(Intent(this,ListActivity::class.java))
@@ -41,21 +41,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getFCMToken(): String?{
-        var token: String? = null
-        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                return@OnCompleteListener
-            }
-
-            // Get new FCM registration token
-            token = task.result
-
-            // Log and toast
-            Log.d(TAG, "FCM Token is ${token}")
-        })
-
-        return token
-    }
+//    private fun getFCMToken(): String?{
+//        var token: String? = null
+//        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+//            if (!task.isSuccessful) {
+//                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+//                return@OnCompleteListener
+//            }
+//
+//            // Get new FCM registration token
+//            token = task.result
+//
+//            // Log and toast
+//            Log.d(TAG, "FCM Token is ${token}")
+//        })
+//
+//        return token
+//    }
 }

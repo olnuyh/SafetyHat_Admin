@@ -11,6 +11,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.databinding.ActivityLoginBinding
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.zxing.integration.android.IntentIntegrator
 import org.json.JSONException
 
@@ -22,12 +24,14 @@ import org.json.JSONObject
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
 
-    private val mContext: Context? = null
+    val TAG = "LoginActivity.class"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        getFCMToken()
 
         binding.loginQrBtn.setOnClickListener {
             val integrator = IntentIntegrator(this)
@@ -96,5 +100,23 @@ class LoginActivity : AppCompatActivity() {
     private fun startMainActivity() {
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun getFCMToken(): String?{
+        var token: String? = null
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+
+            // Get new FCM registration token
+            token = task.result
+
+            // Log and toast
+            Log.d(TAG, "FCM Token is ${token}")
+        })
+
+        return token
     }
 }
