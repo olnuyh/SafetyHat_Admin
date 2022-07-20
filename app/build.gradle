@@ -4,6 +4,9 @@ plugins {
     id 'com.google.gms.google-services'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdk 32
 
@@ -19,6 +22,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "API_KEY", properties['api_key']
     }
 
     buildTypes {
@@ -56,9 +60,8 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:28.4.1')
 
     // QRCODE 라이브러리
-    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
     implementation 'com.google.zxing:core:3.4.0'
-
+    implementation 'com.journeyapps:zxing-android-embedded:4.1.0'
 }
 
 
