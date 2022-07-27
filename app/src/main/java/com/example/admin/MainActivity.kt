@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.mainCalendarBtn.setOnClickListener {
-            startActivity(Intent(this,CalendarActivity::class.java))
+            startActivity(Intent(this,WriteCalendarActivity::class.java))
         }
 
         binding.mainCctvBtn.setOnClickListener {

@@ -31,9 +31,10 @@
         <activity android:name=".ListActivity" />
         <activity android:name=".AlarmActivity" />
         <activity android:name=".AreaActivity" />
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".WriteCalendarActivity" />
+        <activity android:name=".ReadNotificationActivity" />
         <activity android:name=".CctvActivity" />
-        <activity android:name=".ReadNotificationActivity"
+        <activity android:name=".ReadCalendarActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
