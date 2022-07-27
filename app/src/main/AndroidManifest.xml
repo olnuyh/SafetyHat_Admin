@@ -3,48 +3,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.admin" >
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-
     <uses-sdk tools:overrideLibrary="com.google.zxing.client.android" />
 
-    <application
-        android:hardwareAccelerated="true"
+    <uses-permission android:name="android.permission.INTERNET" />
 
+    <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Admin"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".WriteNotificationActivity"
+            android:exported="false" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <!-- qr코드 세로로 바꾸기.. -->
+            android:exported="true" >
+        </activity> <!-- qr코드 세로로 바꾸기.. -->
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".ListActivity" />
+        <activity android:name=".AlarmActivity" />
+        <activity android:name=".AreaActivity" />
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".CctvActivity" />
+        <activity android:name=".ReadNotificationActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".ListActivity"/>
-        <activity android:name=".AlarmActivity"/>
-        <activity android:name=".AreaActivity"/>
-        <activity android:name=".CalendarActivity"/>
-        <activity android:name=".CctvActivity"/>
-        <activity android:name=".NotificationActivity"/>
-        <activity android:name=".SalaryActivity"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SalaryActivity" />
 
-        <service android:name=".FirebaseMessagingServiceUtil"
-            android:exported="false">
+        <service
+            android:name=".FirebaseMessagingServiceUtil"
+            android:exported="false" >
         </service>
-
     </application>
 
 </manifest>
