@@ -3,10 +3,7 @@ package com.example.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.example.admin.databinding.ActivityMainBinding
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.mainNotificationBtn.setOnClickListener {
-            startActivity(Intent(this,NotificationActivity::class.java))
+            startActivity(Intent(this,ReadNotificationActivity::class.java))
         }
     }
 
