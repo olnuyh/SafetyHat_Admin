@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Admin"
+        android:name=".MyApplication"
         android:usesCleartextTraffic="true" >
         <activity
             android:name=".WriteNotificationActivity"
@@ -22,7 +23,12 @@
         <activity
             android:name=".LoginActivity"
             android:exported="true" >
-        </activity> <!-- qr코드 세로로 바꾸기.. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
@@ -36,11 +42,6 @@
         <activity android:name=".CctvActivity" />
         <activity android:name=".ReadCalendarActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".SalaryActivity" />
 

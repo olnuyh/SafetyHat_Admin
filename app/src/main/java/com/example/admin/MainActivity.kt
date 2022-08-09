@@ -36,6 +36,13 @@ class MainActivity : AppCompatActivity() {
         binding.mainNotificationBtn.setOnClickListener {
             startActivity(Intent(this,ReadNotificationActivity::class.java))
         }
+
+        binding.logoutBtn.setOnClickListener {
+            MyApplication.prefs.clear()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
 //    private fun getFCMToken(): String?{
