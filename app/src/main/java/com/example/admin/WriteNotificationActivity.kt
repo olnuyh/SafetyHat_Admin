@@ -46,6 +46,7 @@ class WriteNotificationActivity : AppCompatActivity() {
                         val params: MutableMap<String, String> = HashMap()
                         params["title"] = notificationTitle
                         params["contents"] = notificationContents
+                        params["writer"] = MyApplication.prefs.getString("admin_pkey", "")
                         return params
                     }
                 }

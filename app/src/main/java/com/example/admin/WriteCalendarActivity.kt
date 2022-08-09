@@ -90,6 +90,7 @@ class WriteCalendarActivity : AppCompatActivity() {
                         params["startdate"] = startdate
                         params["enddate"] = enddate
                         params["contents"] = contents
+                        params["writer"] = MyApplication.prefs.getString("admin_pkey", "")
                         return params
                     }
                 }
