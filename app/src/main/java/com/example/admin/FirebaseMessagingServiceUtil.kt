@@ -45,6 +45,7 @@ class FirebaseMessagingServiceUtil: FirebaseMessagingService(){
         var title = remoteMessage.notification!!.title
         var body = remoteMessage.notification!!.body
 
+
         var intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, id, intent, PendingIntent.FLAG_ONE_SHOT)
@@ -64,5 +65,6 @@ class FirebaseMessagingServiceUtil: FirebaseMessagingService(){
 
         notificationManager.createNotificationChannel(channel)
         notificationManager.notify(id, notificationBuilder.build())
+
     }
 }
