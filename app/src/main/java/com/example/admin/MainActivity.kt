@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
-    val TAG = "MainActivity.class"
+    //val TAG = "MainActivity.class"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         //getFCMToken()
 
         binding.mainListBtn.setOnClickListener {
-            startActivity(Intent(this,ListActivity::class.java))
+            startActivity(Intent(this,AreaActivity::class.java))
         }
 
         binding.mainCalendarBtn.setOnClickListener {

@@ -3,4 +3,6 @@
     <string name="default_notification_channel_id">helmetalarm</string>
     <string name="fcm_message">first</string>
     <string name="msg_token_fmt">first tocken</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
