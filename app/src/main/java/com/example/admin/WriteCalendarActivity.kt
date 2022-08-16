@@ -63,7 +63,7 @@ class WriteCalendarActivity : AppCompatActivity() {
 
             val startdate_date = SimpleDateFormat("yyyy-MM-dd").parse(startdate)
             val enddate_date = SimpleDateFormat("yyyy-MM-dd").parse(enddate)
-            if(enddate_date < startdate_date){ // 끝 날짜가 시작 날짜보다 빠른 경우
+            if(enddate_date.before(startdate_date)){ // 끝 날짜가 시작 날짜보다 빠른 경우
                 Toast.makeText(this, "선택 날짜가 올바르지 않습니다.", Toast.LENGTH_LONG).show()
             }
             else if(contents.equals("")){
