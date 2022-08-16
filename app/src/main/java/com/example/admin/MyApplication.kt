@@ -2,10 +2,12 @@ package com.example.admin
 
 import android.app.Application
 import android.content.Context
+import android.util.SparseBooleanArray
 
 class MyApplication : Application() {
     companion object{
         lateinit var prefs : SharedPreferencesManager
+        val workerList = arrayListOf<WorkerCheckStatus>()
     }
 
     override fun onCreate() {

@@ -3,14 +3,8 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <CheckBox
-        android:id="@+id/area_itemCheck"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"/>
-
     <TextView
-        android:id="@+id/area_itemEmplId"
+        android:id="@+id/itemEmplId"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -18,7 +12,7 @@
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/area_itemName"
+        android:id="@+id/itemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
@@ -26,7 +20,7 @@
         android:gravity="center"/>
 
     <TextView
-        android:id="@+id/area_itemAttendance"
+        android:id="@+id/itemAttendance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"

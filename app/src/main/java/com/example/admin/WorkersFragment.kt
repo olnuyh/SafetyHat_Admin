@@ -61,7 +61,7 @@ class WorkersFragment : Fragment() {
             null,
             Response.Listener<JSONArray> { response ->
                 binding.areaWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
-                binding.areaWorkersRecyclerView.adapter = AreaAdapter(areaActivity, response)
+                binding.areaWorkersRecyclerView.adapter = WorkersAdapter(areaActivity, response)
                 binding.areaWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
             },
             Response.ErrorListener { error ->
