@@ -2,6 +2,7 @@ package com.example.admin
 
 import android.content.Context
 import android.graphics.Color
+import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
@@ -44,6 +45,15 @@ class AreaAdapter (val context : Context, val arr : JSONArray) : RecyclerView.Ad
         } else if (status == 1) {
             binding.areaItemAttendance.text = "근무중"
             binding.areaItemAttendance.setTextColor(Color.GREEN)
+        }
+
+        if(workers.getString("work").toInt() == 1){ // 이미 근무 일정이 있는 근무자는 선택할 수 없게 하기
+            binding.areaItemCheck.alpha = 0.4f
+            binding.areaItemCheck.isEnabled = false
+        }
+        else{
+            binding.areaItemCheck.alpha = 1.0f
+            binding.areaItemCheck.isEnabled = true
         }
 
         if(position >= MyApplication.workerList.size)

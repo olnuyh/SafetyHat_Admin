@@ -1,6 +1,8 @@
 package com.example.admin
 
+import android.app.AlertDialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
@@ -180,10 +182,8 @@ class AreaRegistrationFragment : Fragment() {
                 Toast.makeText(areaActivity, "종료 시간을 입력해주세요", Toast.LENGTH_SHORT).show()
             }
             else{
-                val start = SimpleDateFormat("h:mm").parse(startHour+":"+ startMinutes)
-                val end = SimpleDateFormat("h:mm").parse(endHour+":"+ endMinutes)
-
-                Log.d("mobileApp", start.toString())
+                val start = SimpleDateFormat("H:mm").parse(startHour+":"+ startMinutes)
+                val end = SimpleDateFormat("H:mm").parse(endHour+":"+ endMinutes)
 
                 if(start.after(end)){
                     Toast.makeText(areaActivity, "입력한 시간이 올바르지 않습니다. 다시 입력해주세요.", Toast.LENGTH_LONG).show()
@@ -200,6 +200,8 @@ class AreaRegistrationFragment : Fragment() {
                             resultObj.put("worker_id", MyApplication.workerList[i].id)
 
                             resultArray.put(resultObj)
+
+                            MyApplication.workerList[i].isChecked = false
                         }
                     }
 
@@ -207,59 +209,45 @@ class AreaRegistrationFragment : Fragment() {
                         Toast.makeText(areaActivity, "근무자를 선택해주세요.", Toast.LENGTH_LONG).show()
                     }
                     else{
-                        val areaRegistrationRequest = object : StringRequest(
-                            Request.Method.POST,
-                            BuildConfig.API_KEY+"register_area.php",
-                            Response.Listener<String>{ response ->
-                                Toast.makeText(areaActivity, response.toString(), Toast.LENGTH_LONG).show()
-                            },
-                            Response.ErrorListener { error ->
-                                Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-                            }){
-                            override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
-                                val params : MutableMap<String, String> = HashMap()
-                                params["worker"] = resultArray.toString()
-                                return params
-                            }
-                        }
+                        val builder = AlertDialog.Builder(areaActivity)
+                        builder.setTitle("등록 확인")
+                            .setMessage("등록하시겠습니까?")
+                            .setPositiveButton("확인",
+                                DialogInterface.OnClickListener { dialog, id ->
+                                    val areaRegistrationRequest = object : StringRequest(
+                                        Request.Method.POST,
+                                        BuildConfig.API_KEY+"register_area.php",
+                                        Response.Listener<String>{ response ->
+                                            val queue2 = Volley.newRequestQueue(areaActivity)
+                                            queue2.add(readWorkersRequest)
+                                            binding.areaSpinner.setSelection(0)
+                                            binding.startHour.text = null
+                                            binding.startMinutes.text = null
+                                            binding.endHour.text = null
+                                            binding.endMinutes.text = null
+                                            Toast.makeText(areaActivity, "등록되었습니다.", Toast.LENGTH_LONG).show()
+                                        },
+                                        Response.ErrorListener { error ->
+                                            Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+                                        }){
+                                        override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
+                                            val params : MutableMap<String, String> = HashMap()
+                                            params["worker"] = resultArray.toString()
+                                            return params
+                                        }
+                                    }
 
-                        val queue = Volley.newRequestQueue(areaActivity)
-                        queue.add(areaRegistrationRequest)
-                    }
-                }
-                /*
-
-                val areaRegistrationRequest = object : StringRequest(
-                    Request.Method.POST,
-                    BuildConfig.API_KEY+"write_calendar.php",
-                    Response.Listener<String>{ response ->
-                        if(response.toString().equals("1")) { // 성공
-                            Toast.makeText(this, "일정이 등록되었습니다.", Toast.LENGTH_LONG).show()
-                            finish()
-                            val intent = Intent(this, ReadCalendarActivity::class.java)
-                            startActivity(intent)
-                        }
-                    },
-                    Response.ErrorListener { error ->
-                        Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
-                    }){
-                    override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
-                        val params : MutableMap<String, String> = HashMap()
-                        params["startdate"] = startdate
-                        params["enddate"] = enddate
-                        params["contents"] = contents
-                        params["writer"] = MyApplication.prefs.getString("admin_pkey", "")
-                        return params
+                                    val queue = Volley.newRequestQueue(areaActivity)
+                                    queue.add(areaRegistrationRequest)
+                                })
+                            .setNegativeButton("취소",
+                                DialogInterface.OnClickListener { dialog, id ->
+                                })
+                        builder.show()
                     }
                 }
 
-                val queue = Volley.newRequestQueue(areaActivity)
-                queue.add(areaRegistrationRequest)
-
-            }
-                 */
         } }
-
         return binding.root
     }
 
