@@ -3,13 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/registerAreaBtn"
-        android:text="구역 등록"/>
-    <androidx.recyclerview.widget.RecyclerView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/areaCheckRecyclerView"/>
+        android:id="@+id/dialogEditArea"/>
 </LinearLayout>

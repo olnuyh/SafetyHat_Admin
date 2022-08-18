@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.admin.databinding.ActivityMainBinding
+import org.json.JSONArray
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -21,6 +23,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
+            Request.Method.GET,
+            BuildConfig.API_KEY + "read_workers.php",
+            null,
+            Response.Listener<JSONArray> { response ->
+                MyApplication.workers = response
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
+            }
+        )
+
+        val queue = Volley.newRequestQueue(this)
+        queue.add(readWorkersRequest)
 
         //getFCMToken()
 

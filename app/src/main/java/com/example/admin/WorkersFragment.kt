@@ -55,22 +55,9 @@ class WorkersFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentWorkersBinding.inflate(inflater, container, false)
 
-        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-            Request.Method.GET,
-            BuildConfig.API_KEY + "read_workers.php",
-            null,
-            Response.Listener<JSONArray> { response ->
-                binding.areaWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
-                binding.areaWorkersRecyclerView.adapter = WorkersAdapter(areaActivity, response)
-                binding.areaWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
-            },
-            Response.ErrorListener { error ->
-                Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-            }
-        )
-
-        val queue = Volley.newRequestQueue(areaActivity)
-        queue.add(readWorkersRequest)
+        binding.areaWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
+        binding.areaWorkersRecyclerView.adapter = WorkersAdapter(areaActivity, MyApplication.workers)
+        binding.areaWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
 
         return binding.root
     }

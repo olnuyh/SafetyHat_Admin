@@ -3,10 +3,12 @@ package com.example.admin
 import android.app.Application
 import android.content.Context
 import android.util.SparseBooleanArray
+import org.json.JSONArray
 
 class MyApplication : Application() {
     companion object{
         lateinit var prefs : SharedPreferencesManager
+        lateinit var workers : JSONArray
         val workerList = arrayListOf<WorkerCheckStatus>()
     }
 

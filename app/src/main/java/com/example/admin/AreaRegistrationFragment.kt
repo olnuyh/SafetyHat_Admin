@@ -49,37 +49,11 @@ private const val ARG_PARAM2 = "param2"
  */
 class AreaRegistrationFragment : Fragment() {
     lateinit var areaActivity: AreaActivity
-    lateinit var jsonResponse : JSONArray
     lateinit var area : ArrayList<String>
     lateinit var areaSelected : String
+    lateinit var binding : FragmentAreaRegistrationBinding
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        // 2. Context를 Activity로 형변환하여 할당
-        areaActivity = context as AreaActivity
-    }
-
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val binding = FragmentAreaRegistrationBinding.inflate(layoutInflater, container, false)
-
+    fun readArea(){
         val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
             BuildConfig.API_KEY + "read_area_list.php",
@@ -117,7 +91,7 @@ class AreaRegistrationFragment : Fragment() {
 
                         // set selected item style
                         //if (position == spinner.selectedItemPosition){
-                            //view.background = ColorDrawable(Color.parseColor("#F5F5F5"))
+                        //view.background = ColorDrawable(Color.parseColor("#F5F5F5"))
                         //}
 
 
@@ -134,8 +108,47 @@ class AreaRegistrationFragment : Fragment() {
             }
         )
 
-        val queue1 = Volley.newRequestQueue(areaActivity)
-        queue1.add(readAreaRequest)
+        val queue = Volley.newRequestQueue(areaActivity)
+        queue.add(readAreaRequest)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        // 2. Context를 Activity로 형변환하여 할당
+        areaActivity = context as AreaActivity
+    }
+
+    // TODO: Rename and change types of parameters
+    private var param1: String? = null
+    private var param2: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            param1 = it.getString(ARG_PARAM1)
+            param2 = it.getString(ARG_PARAM2)
+        }
+    }
+
+    override fun onResume() {
+        readArea()
+        super.onResume()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        binding = FragmentAreaRegistrationBinding.inflate(layoutInflater, container, false)
+
+        binding.readWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
+        binding.readWorkersRecyclerView.adapter = AreaAdapter(areaActivity, MyApplication.workers)
+        binding.readWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
+
+        readArea()
 
         binding.areaSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -147,25 +160,7 @@ class AreaRegistrationFragment : Fragment() {
             }
         }
 
-        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-            Request.Method.GET,
-            BuildConfig.API_KEY + "read_workers.php",
-            null,
-            Response.Listener<JSONArray> { response ->
-                jsonResponse = response
-                binding.readWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
-                binding.readWorkersRecyclerView.adapter = AreaAdapter(areaActivity, jsonResponse)
-                binding.readWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
-            },
-            Response.ErrorListener { error ->
-                Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-            }
-        )
-
-        val queue2 = Volley.newRequestQueue(areaActivity)
-        queue2.add(readWorkersRequest)
-
-        binding.registerAreaBtn.setOnClickListener {
+        binding.registerWorkBtn.setOnClickListener {
             val startHour = binding.startHour.text.toString()
             val startMinutes = binding.startMinutes.text.toString()
             val endHour = binding.endHour.text.toString()
@@ -201,6 +196,7 @@ class AreaRegistrationFragment : Fragment() {
 
                             resultArray.put(resultObj)
 
+                            Log.d("mobileApp", MyApplication.workerList[i].id)
                             MyApplication.workerList[i].isChecked = false
                         }
                     }
@@ -216,10 +212,25 @@ class AreaRegistrationFragment : Fragment() {
                                 DialogInterface.OnClickListener { dialog, id ->
                                     val areaRegistrationRequest = object : StringRequest(
                                         Request.Method.POST,
-                                        BuildConfig.API_KEY+"register_area.php",
+                                        BuildConfig.API_KEY+"register_work.php",
                                         Response.Listener<String>{ response ->
-                                            val queue2 = Volley.newRequestQueue(areaActivity)
-                                            queue2.add(readWorkersRequest)
+                                            val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
+                                                Request.Method.GET,
+                                                BuildConfig.API_KEY + "read_workers.php",
+                                                null,
+                                                Response.Listener<JSONArray> { response ->
+                                                    binding.readWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
+                                                    binding.readWorkersRecyclerView.adapter = AreaAdapter(areaActivity, response)
+                                                    binding.readWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
+                                                },
+                                                Response.ErrorListener { error ->
+                                                    Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+                                                }
+                                            )
+
+                                            val queue = Volley.newRequestQueue(areaActivity)
+                                            queue.add(readWorkersRequest)
+
                                             binding.areaSpinner.setSelection(0)
                                             binding.startHour.text = null
                                             binding.startMinutes.text = null
@@ -247,7 +258,9 @@ class AreaRegistrationFragment : Fragment() {
                     }
                 }
 
-        } }
+        }
+        }
+
         return binding.root
     }
 

@@ -20,12 +20,17 @@
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/activity_read_notification.xml" value="0.13722826086956522" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/activity_register_notification.xml" value="0.13722826086956522" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/activity_write_calendar.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/dialog_area_detail.xml" value="0.2427536231884058" />
+        <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/dialog_detail.xml" value="0.881578947368421" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/dialog_login.xml" value="0.14175724637681159" />
+        <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/dialog_register_area.xml" value="0.2427536231884058" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/fragment_area_check.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/fragment_area_registration.xml" value="0.2390625" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/fragment_workers.xml" value="0.25181159420289856" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/item_area.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/item_cardview.xml" value="0.23641304347826086" />
         <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/item_notification.xml" value="0.8800000000000001" />
+        <entry key="..\:/Users/rihyu/Documents/AndroidStudioProjects/Admin/app/src/main/res/layout/item_workers.xml" value="0.23641304347826086" />
       </map>
     </option>
   </component>

@@ -13,7 +13,6 @@ import com.example.admin.databinding.ItemAreaBinding
 import org.json.JSONArray
 import org.json.JSONObject
 
-
 class AreaViewHolder(val binding : ItemAreaBinding) : RecyclerView.ViewHolder(binding.root)
 class AreaAdapter (val context : Context, val arr : JSONArray) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int {
@@ -61,10 +60,9 @@ class AreaAdapter (val context : Context, val arr : JSONArray) : RecyclerView.Ad
 
         binding.areaItemCheck.isChecked = MyApplication.workerList[position].isChecked
 
-        binding.areaItemCheck.setOnClickListener(View.OnClickListener {
-            val isChecked: Boolean = binding.areaItemCheck.isChecked
-            MyApplication.workerList[position].isChecked = isChecked
-        })
+        binding.areaItemCheck.setOnClickListener{
+            MyApplication.workerList[position].isChecked = binding.areaItemCheck.isChecked
+        }
     }
 }
 

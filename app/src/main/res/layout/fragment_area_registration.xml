@@ -6,7 +6,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/registerAreaBtn"
+        android:id="@+id/registerWorkBtn"
         android:text="등록"/>
 
     <LinearLayout
@@ -94,7 +94,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <CheckBox
-            android:id="@+id/chBox"
+            android:id="@+id/selectAllChBoxes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
