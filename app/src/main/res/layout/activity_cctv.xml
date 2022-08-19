@@ -6,12 +6,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <TextView
-        android:id="@+id/notification"
+    <Button
+        android:id="@+id/cctv_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="실시간 현장 페이지"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="경고음"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
