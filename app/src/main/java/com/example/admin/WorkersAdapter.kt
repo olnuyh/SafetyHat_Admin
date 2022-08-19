@@ -36,5 +36,9 @@ class WorkersAdapter(val context : Context, val arr : JSONArray) : RecyclerView.
             binding.itemAttendance.text = "근무중"
             binding.itemAttendance.setTextColor(Color.GREEN)
         }
+        else if(status == 2){
+            binding.itemAttendance.text = "퇴근"
+            binding.itemAttendance.setTextColor(Color.MAGENTA)
+        }
     }
 }
