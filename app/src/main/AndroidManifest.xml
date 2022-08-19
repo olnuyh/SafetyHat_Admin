@@ -21,7 +21,7 @@
             android:name=".WriteNotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".ReadCalendarActivity"
+            android:name=".SalaryActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,7 @@
         <activity android:name=".CctvActivity"
             android:exported="true">
         </activity>
-        <activity android:name=".SalaryActivity" />
+        <activity android:name=".ReadCalendarActivity" />
 
         <service
             android:name=".FirebaseMessagingServiceUtil"
