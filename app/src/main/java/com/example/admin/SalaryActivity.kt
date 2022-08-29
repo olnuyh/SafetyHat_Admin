@@ -22,7 +22,7 @@ class SalaryActivity : AppCompatActivity() {
 
         val salaryRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
-            BuildConfig.API_KEY + ".workers_salary.php",
+            BuildConfig.API_KEY + "workers_salary.php",
             null,
             Response.Listener<JSONArray> { response ->
                 binding.salaryRecyclerView.layoutManager = LinearLayoutManager(this)
