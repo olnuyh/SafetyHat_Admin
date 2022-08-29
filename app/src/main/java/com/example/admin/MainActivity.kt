@@ -126,7 +126,7 @@ class MainActivity : AppCompatActivity() {
 
         //날씨
         val weatherRequest= object : StringRequest(
-            Method.GET,  "http://api.openweathermap.org/data/2.5/weather?q=SEOUL&appid=37d3bd9c47d108db7765862becf39ead",
+            Method.GET,  BuildConfig.WEATHER_API_KEY,
             Response.Listener<String>{ response ->
                 val jsonObject = JSONObject(response)
                 val city = jsonObject.getString("name")
