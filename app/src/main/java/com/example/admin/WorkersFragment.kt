@@ -2,6 +2,9 @@ package com.example.admin
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +18,8 @@ import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.Volley
 import com.example.admin.databinding.FragmentWorkersBinding
 import org.json.JSONArray
+import android.widget.SearchView
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +31,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [WorkersFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class WorkersFragment : Fragment() {
+class WorkersFragment : Fragment(){
     lateinit var areaActivity: AreaActivity
 
     override fun onAttach(context: Context) {

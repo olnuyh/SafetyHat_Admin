@@ -1,16 +1,21 @@
 package com.example.admin
 
+import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.admin.databinding.ItemWorkersBinding
 import org.json.JSONArray
 import org.json.JSONObject
 
+
 class WorkersViewHolder(val binding : ItemWorkersBinding) : RecyclerView.ViewHolder(binding.root)
-class WorkersAdapter(val context : Context, val arr : JSONArray) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class WorkersAdapter(val context : Context, val arr : JSONArray) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+
+
     override fun getItemCount(): Int {
         return arr.length()?:0
     }
@@ -41,4 +46,6 @@ class WorkersAdapter(val context : Context, val arr : JSONArray) : RecyclerView.
             binding.itemAttendance.setTextColor(Color.MAGENTA)
         }
     }
+
+
 }
