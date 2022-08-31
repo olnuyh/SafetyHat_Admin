@@ -35,7 +35,8 @@
             android:lineSpacingExtra="5sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="149dp"
-            android:text="터치하세요"/>
+            android:text="터치하세요"
+            android:fontFamily="@font/montserratsemibold"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,6 +48,7 @@
             android:lineSpacingExtra="8sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="319dp"
+            android:fontFamily="@font/a15"
             android:text="관리자 로그인"/>
 
         <TextView
@@ -61,7 +63,8 @@
             android:layout_gravity="center_horizontal"
             android:gravity="center"
             android:layout_marginTop="369dp"
-            android:text="관리자 전용 QR코드를\n스캔해주세요"/>
+            android:text="관리자 전용 QR코드를\n스캔해주세요"
+            android:fontFamily="@font/a12"/>
     </FrameLayout>
 
 

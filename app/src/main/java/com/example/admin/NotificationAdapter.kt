@@ -26,6 +26,6 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
         binding.itemTitle.text = notification.getString("notification_title")
         val insert_date = notification.getString("insert_date")
         val date = insert_date.substring(0, insert_date.indexOf(" "))
-        binding.itemDate.text = date
+
     }
 }

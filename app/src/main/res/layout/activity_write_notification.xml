@@ -26,7 +26,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28.3dp"
-        android:background="@drawable/notification_626"
         android:hint="제목"
         android:ems="10"
         android:inputType="textPersonName"
@@ -45,7 +44,6 @@
         android:ems="10"
         android:hint="내용"
         android:inputType="textPersonName"
-        android:background="@drawable/notification_626"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/writeNotificationTitle" />
