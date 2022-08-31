@@ -3,7 +3,9 @@ package com.example.admin
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.example.admin.databinding.ItemNotificationBinding
 import org.json.JSONArray
@@ -28,4 +30,5 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
         val date = insert_date.substring(0, insert_date.indexOf(" "))
 
     }
+
 }
