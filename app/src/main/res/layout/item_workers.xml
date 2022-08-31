@@ -26,4 +26,12 @@
         android:layout_weight="1"
         android:hint ="출결"
         android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/itemArea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:hint ="구역"
+        android:gravity="center"/>
 </LinearLayout>

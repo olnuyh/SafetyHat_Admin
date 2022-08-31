@@ -38,7 +38,7 @@ class CctvActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg p0: String?): Void? {
             try {
-                client = Socket(SERVER_IP, 6699)
+                client = Socket(SERVER_IP, 6666)
                 dataOutput = DataOutputStream(client!!.getOutputStream())
                 dataInput = DataInputStream(client!!.getInputStream())
                 output_message = strings[0]
@@ -55,7 +55,7 @@ class CctvActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val SERVER_IP = "172.20.10.2"
+        private const val SERVER_IP = "192.168.0.71"
         private const val CONNECT_MSG = "connect"
         private const val STOP_MSG = "stop"
         private const val BUF_SIZE = 100

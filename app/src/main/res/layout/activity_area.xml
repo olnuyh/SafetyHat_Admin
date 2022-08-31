@@ -9,8 +9,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="21dp"
+        app:tabBackground="@drawable/tablayout_style"
+        app:tabIndicatorHeight="0dp"
         android:id="@+id/areaTab"/>
     <androidx.viewpager2.widget.ViewPager2
         android:layout_width="match_parent"

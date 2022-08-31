@@ -6,14 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".WriteNotificationActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="6.3dp"
+        android:gravity="center_horizontal"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="1sp"
+        android:textColor="#de000000"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="공지 등록" />
+
     <EditText
         android:id="@+id/writeNotificationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="171dp"
+        android:layout_marginTop="28.3dp"
+        android:background="@drawable/notification_626"
+        android:hint="제목"
         android:ems="10"
-        android:hint="제목을 입력하세요."
         android:inputType="textPersonName"
+        android:lineSpacingExtra="1.5sp"
+        android:textColor="#5a607f"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,20 +41,21 @@
         android:id="@+id/writeNotificationContents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="50.5dp"
         android:ems="10"
-        android:hint="내용을 입력하세요"
+        android:hint="내용"
         android:inputType="textPersonName"
+        android:background="@drawable/notification_626"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/writeNotificationTitle" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/registerNotificationBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="136dp"
-        android:text="등록"
+        android:text="확인"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

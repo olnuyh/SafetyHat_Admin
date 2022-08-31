@@ -10,6 +10,7 @@ class MyApplication : Application() {
         lateinit var prefs : SharedPreferencesManager
         lateinit var workers : JSONArray
         val workerList = arrayListOf<WorkerCheckStatus>()
+        val areaList = arrayListOf<String>()
     }
 
     override fun onCreate() {

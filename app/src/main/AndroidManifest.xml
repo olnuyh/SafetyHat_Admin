@@ -21,10 +21,6 @@
             android:name=".WriteNotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".SalaryActivity"
-            android:exported="true" >
-        </activity>
-        <activity
             android:name="com.journeyapps.barcodescanner.CaptureActivity"
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
@@ -36,9 +32,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".AreaActivity" />
+        <activity android:name=".SalaryActivity" />
         <activity android:name=".WriteCalendarActivity" />
         <activity android:name=".ReadNotificationActivity" />
         <activity android:name=".AlarmActivity" />
