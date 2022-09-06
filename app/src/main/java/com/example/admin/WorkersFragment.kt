@@ -39,6 +39,33 @@ private const val ARG_PARAM2 = "param2"
 class WorkersFragment : Fragment(){
     lateinit var areaActivity: AreaActivity
     lateinit var binding : FragmentWorkersBinding
+    lateinit var spinnerAdapter : ArrayAdapter<String>
+
+    fun readArea(){
+        val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
+            Request.Method.GET,
+            BuildConfig.API_KEY + "read_area_list.php",
+            null,
+            Response.Listener<JSONArray> { response ->
+                MyApplication.areaList.clear()
+                MyApplication.areaList.add("-")
+                for (i in 0 until response.length()) {
+                    val obj = response[i] as JSONObject
+                    val name = obj.getString("area_name")
+                    MyApplication.areaList.add(name)
+                }
+                MyApplication.areaList.add("+ 추가")
+                MyApplication.areaList.add("구역을 선택하세요.")
+                binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+            }
+        )
+
+        val queue = Volley.newRequestQueue(areaActivity)
+        queue.add(readAreaRequest)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -81,7 +108,7 @@ class WorkersFragment : Fragment(){
             binding.searchText.text = null
         }
 
-        val spinnerAdapter: ArrayAdapter<String> = object : ArrayAdapter<String>(
+        spinnerAdapter = object : ArrayAdapter<String>(
             areaActivity,
             R.layout.spinner_row,
             R.id.spnItemName,
@@ -131,33 +158,7 @@ class WorkersFragment : Fragment(){
                                     Request.Method.POST,
                                     BuildConfig.API_KEY + "delete_area.php",
                                     Response.Listener<String> { response ->
-                                        val readAreaRequest =
-                                            JsonArrayRequest( // Volley를 이용한 http 통신
-                                                Method.GET,
-                                                BuildConfig.API_KEY + "read_area_list.php",
-                                                null,
-                                                Response.Listener<JSONArray> { response ->
-                                                    MyApplication.areaList.clear()
-                                                    MyApplication.areaList.add("-")
-                                                    for (i in 0 until response.length()) {
-                                                        val obj = response[i] as JSONObject
-                                                        val name = obj.getString("area_name")
-                                                        MyApplication.areaList.add(name)
-                                                    }
-                                                    MyApplication.areaList.add("+ 추가")
-                                                    MyApplication.areaList.add("구역을 선택하세요.")
-                                                    //binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
-                                                },
-                                                Response.ErrorListener { error ->
-                                                    Toast.makeText(
-                                                        areaActivity,
-                                                        error.toString(),
-                                                        Toast.LENGTH_LONG
-                                                    ).show()
-                                                }
-                                            )
-
-                                        queue.add(readAreaRequest)
+                                        readArea()
                                         Toast.makeText(
                                             areaActivity,
                                             "구역이 삭제되었습니다.",
@@ -181,7 +182,7 @@ class WorkersFragment : Fragment(){
                                 queue.add(deleteAreaRequest)
                             })
                             setNegativeButton("취소", DialogInterface.OnClickListener { dialog, id ->
-                                //binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
+                                binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
                             })
                             setCancelable(false)
                             show()
@@ -221,28 +222,7 @@ class WorkersFragment : Fragment(){
                                             Toast.makeText(areaActivity, "이미 존재하는 구역입니다.", Toast.LENGTH_LONG).show()
                                         }
                                         else if(response.equals("1")){ // 정상 추가 성공
-                                            val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-                                                Method.GET,
-                                                BuildConfig.API_KEY + "read_area_list.php",
-                                                null,
-                                                Response.Listener<JSONArray> { response ->
-                                                    MyApplication.areaList.clear()
-                                                    MyApplication.areaList.add("-")
-                                                    for (i in 0 until response.length()){
-                                                        val obj = response[i] as JSONObject
-                                                        val name = obj.getString("area_name")
-                                                        MyApplication.areaList.add(name)
-                                                    }
-                                                    MyApplication.areaList.add("+ 추가")
-                                                    MyApplication.areaList.add("구역을 선택하세요.")
-                                                    binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
-                                                },
-                                                Response.ErrorListener { error ->
-                                                    Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-                                                }
-                                            )
-
-                                            queue.add(readAreaRequest)
+                                            readArea()
                                             Toast.makeText(areaActivity, "구역이 추가되었습니다.", Toast.LENGTH_LONG).show()
                                         }
                                     },
