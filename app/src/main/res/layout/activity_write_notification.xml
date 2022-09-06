@@ -10,18 +10,18 @@
         android:id="@+id/notificationTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="114dp"
         android:fontFamily="@font/a14"
-        android:textStyle="normal"
-        android:textSize="20sp"
-        android:textColor="#de000000"
+        android:gravity="center_horizontal"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="4sp"
-        android:gravity="center_horizontal"
         android:text="공지 등록"
-        android:layout_marginTop="31dp"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginStart="33dp"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:textColor="#de000000"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText

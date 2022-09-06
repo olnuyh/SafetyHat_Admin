@@ -6,14 +6,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <Button
-        android:id="@+id/cctv_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="경고음"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
 
+    <ImageView
+        android:layout_width="316dp"
+        android:layout_height="185dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="22dp"
+        android:background="#b5ddd9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+
+    <ImageButton
+        android:id="@+id/cctv_btn"
+        android:layout_width="178dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="380dp"
+        android:text="경고음"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@android:color/transparent"
+        android:src="@drawable/alarm"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
