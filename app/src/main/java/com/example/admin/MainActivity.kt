@@ -97,7 +97,6 @@ class MainActivity : AppCompatActivity() {
             BuildConfig.API_KEY + "read_area_list.php",
             null,
             Response.Listener<JSONArray> { response ->
-                MyApplication.areaList.add("")
                 MyApplication.areaList.add("-")
 
                 for (i in 0 until response.length()){
@@ -107,6 +106,7 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 MyApplication.areaList.add("+ 추가")
+                MyApplication.areaList.add("구역을 선택하세요.")
             },
             Response.ErrorListener { error ->
                 Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()

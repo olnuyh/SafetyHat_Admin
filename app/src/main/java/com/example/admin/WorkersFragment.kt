@@ -1,17 +1,16 @@
 package com.example.admin
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,12 +19,12 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.admin.databinding.DialogAreaDetailBinding
+import com.example.admin.databinding.DialogDeleteAreaBinding
 import com.example.admin.databinding.DialogRegisterAreaBinding
 import com.example.admin.databinding.FragmentWorkersBinding
 import org.json.JSONArray
 import org.json.JSONObject
-import java.util.HashMap
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,7 +43,6 @@ class WorkersFragment : Fragment(){
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
-        // 2. Context를 Activity로 형변환하여 할당
         areaActivity = context as AreaActivity
     }
 
@@ -70,7 +68,12 @@ class WorkersFragment : Fragment(){
         binding.areaWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
         val adapter = WorkersAdapter(areaActivity, MyApplication.workers)
         binding.areaWorkersRecyclerView.adapter = adapter
-        binding.areaWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
+        binding.areaWorkersRecyclerView.addItemDecoration(
+            DividerItemDecoration(
+                areaActivity,
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
         binding.searchBtn.setOnClickListener {
             val searchText = binding.searchText.text.toString()
@@ -78,48 +81,127 @@ class WorkersFragment : Fragment(){
             binding.searchText.text = null
         }
 
-        val spinnerAdapter: ArrayAdapter<String> = object: ArrayAdapter<String>(
+        val spinnerAdapter: ArrayAdapter<String> = object : ArrayAdapter<String>(
             areaActivity,
-            android.R.layout.simple_spinner_dropdown_item,
+            R.layout.spinner_row,
+            R.id.spnItemName,
             MyApplication.areaList
-        ){
+        ) {
             override fun getDropDownView(
                 position: Int,
                 convertView: View?,
                 parent: ViewGroup
             ): View {
-                val view: TextView = super.getDropDownView(
-                    position,
-                    convertView,
-                    parent
-                ) as TextView
+                return getCustomView(position, convertView, parent)
+            }
 
-                // set item text bold and sans serif font
-                //view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD)
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                return getCustomView(position, convertView, parent)
+            }
 
-                // spinner item text color
-                //view.setTextColor(Color.parseColor("#2E2D88"))
+            override fun getCount(): Int {
+                return super.getCount() - 1
+            }
 
-                // set selected item style
-                //if (position == spinner.selectedItemPosition){
-                //view.background = ColorDrawable(Color.parseColor("#F5F5F5"))
-                //}
+            fun getCustomView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val inflater = (context as Activity).layoutInflater
+                val rowView = inflater.inflate(R.layout.spinner_row, parent, false)
+                val spnItemName = rowView.findViewById<View>(R.id.spnItemName) as TextView
+                val spnItemDel = rowView.findViewById<View>(R.id.spnItemDel) as TextView
 
+                if (position == count) {
+                    spnItemName.setText("")
+                    spnItemName.hint = getItem(count)
+                    spnItemDel.visibility = View.GONE
+                } else if (position == 0 || position == count - 1) {
+                    spnItemName.setText(MyApplication.areaList[position])
+                    spnItemDel.visibility = View.GONE
+                } else {
+                    spnItemName.setText(MyApplication.areaList[position])
+                    spnItemDel.setOnClickListener {
+                        val queue = Volley.newRequestQueue(areaActivity)
 
-                // spinner item text alignment center
-                view.textAlignment = View.TEXT_ALIGNMENT_CENTER
-                return view
+                        val binding3 = DialogDeleteAreaBinding.inflate(layoutInflater)
+                        binding3.dialogDeleteArea.setText(MyApplication.areaList[position] + "구역")
+                        AlertDialog.Builder(areaActivity).run {
+                            setTitle("삭제할 구역 입력")
+                            setView(binding3.root)
+                            setPositiveButton("확인", DialogInterface.OnClickListener { dialog, id ->
+                                val deleteAreaRequest = object : StringRequest(
+                                    Request.Method.POST,
+                                    BuildConfig.API_KEY + "delete_area.php",
+                                    Response.Listener<String> { response ->
+                                        val readAreaRequest =
+                                            JsonArrayRequest( // Volley를 이용한 http 통신
+                                                Method.GET,
+                                                BuildConfig.API_KEY + "read_area_list.php",
+                                                null,
+                                                Response.Listener<JSONArray> { response ->
+                                                    MyApplication.areaList.clear()
+                                                    MyApplication.areaList.add("-")
+                                                    for (i in 0 until response.length()) {
+                                                        val obj = response[i] as JSONObject
+                                                        val name = obj.getString("area_name")
+                                                        MyApplication.areaList.add(name)
+                                                    }
+                                                    MyApplication.areaList.add("+ 추가")
+                                                    MyApplication.areaList.add("구역을 선택하세요.")
+                                                    //binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
+                                                },
+                                                Response.ErrorListener { error ->
+                                                    Toast.makeText(
+                                                        areaActivity,
+                                                        error.toString(),
+                                                        Toast.LENGTH_LONG
+                                                    ).show()
+                                                }
+                                            )
+
+                                        queue.add(readAreaRequest)
+                                        Toast.makeText(
+                                            areaActivity,
+                                            "구역이 삭제되었습니다.",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    },
+                                    Response.ErrorListener { error ->
+                                        Toast.makeText(
+                                            areaActivity,
+                                            error.toString(),
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }) {
+                                    override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
+                                        val params: MutableMap<String, String> = HashMap()
+                                        params["area"] = MyApplication.areaList[position]
+                                        return params
+                                    }
+                                }
+
+                                queue.add(deleteAreaRequest)
+                            })
+                            setNegativeButton("취소", DialogInterface.OnClickListener { dialog, id ->
+                                //binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
+                            })
+                            setCancelable(false)
+                            show()
+                        }
+                    }
+                }
+                return rowView
             }
         }
 
         binding.areaFilterSpinner.adapter = spinnerAdapter
+        binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
+        binding.areaFilterSpinner.dropDownVerticalOffset = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 45f, resources.displayMetrics).toInt()
         binding.areaFilterSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(p0: AdapterView<*>?) {
 
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                if(p2 == MyApplication.areaList.size - 1){
+                if(MyApplication.areaList[p2].equals("+ 추가")){
                     val queue = Volley.newRequestQueue(areaActivity)
 
                     val binding2 = DialogRegisterAreaBinding.inflate(layoutInflater)
@@ -145,7 +227,6 @@ class WorkersFragment : Fragment(){
                                                 null,
                                                 Response.Listener<JSONArray> { response ->
                                                     MyApplication.areaList.clear()
-                                                    MyApplication.areaList.add("")
                                                     MyApplication.areaList.add("-")
                                                     for (i in 0 until response.length()){
                                                         val obj = response[i] as JSONObject
@@ -153,6 +234,8 @@ class WorkersFragment : Fragment(){
                                                         MyApplication.areaList.add(name)
                                                     }
                                                     MyApplication.areaList.add("+ 추가")
+                                                    MyApplication.areaList.add("구역을 선택하세요.")
+                                                    binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
                                                 },
                                                 Response.ErrorListener { error ->
                                                     Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
@@ -176,11 +259,14 @@ class WorkersFragment : Fragment(){
                                 queue.add(registerAreaRequest)
                             }
                         })
+                        setNegativeButton("취소", DialogInterface.OnClickListener { dialog, id ->
+                            binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
+                        })
+                        setCancelable(false)
                         show()
                     }
-                    binding.areaFilterSpinner.setSelection(0)
-
-                }else{
+                }
+                else if(p2 != spinnerAdapter.count){
                     adapter.spinnerFilter(MyApplication.areaList[p2])
                 }
             }
