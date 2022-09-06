@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.admin.databinding.ActivityReadNotificationBinding
 import org.json.JSONArray
@@ -31,16 +32,18 @@ class ReadNotificationActivity : AppCompatActivity() {
             },
             Response.ErrorListener { error ->
                 Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
-            }
-        )
+            })
 
         val queue = Volley.newRequestQueue(this)
         queue.add(readNotificationRequest)
+
+
 
         binding.goToRegisterNotificationBtn.setOnClickListener {
             finish()
             val intent = Intent(this, WriteNotificationActivity::class.java)
             startActivity(intent)
         }
+
     }
 }
