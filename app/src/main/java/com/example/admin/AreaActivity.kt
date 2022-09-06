@@ -43,7 +43,7 @@ class AreaActivity : AppCompatActivity() {
         binding.areaViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.areaViewPager.adapter = FragmentAdapter(this)
 
-        val tabTitles = listOf<String>("근무자", "작업등록", "구역확인") //탭에 보여질 이름
+        val tabTitles = listOf<String>("근무자", "작업등록") //탭에 보여질 이름
 
         TabLayoutMediator(binding.areaTab, binding.areaViewPager){
                 tab, position -> tab.text = tabTitles[position]
