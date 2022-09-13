@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
     android:id="@+id/drawerLayout"
     tools:context=".MainActivity">
 
@@ -21,43 +22,306 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/sosTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="130dp"
+            android:textColor="#3e4f87"
+            android:text="긴급연락"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="170dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="11sp"
+            android:textColor="#6f6f6f"
+            android:textSize="13sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="최근 메세지" />
+
+        <TextView
+            android:id="@+id/sosTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="209dp"
+            android:layout_marginEnd="40dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="11sp"
+            android:textColor="#6f6f6f"
+            android:textSize="11sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toStartOf="@+id/sosName"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="시간" />
+
+        <TextView
+            android:id="@+id/sosName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="209dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="11sp"
+            android:textColor="#6f6f6f"
+            android:textSize="11sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="이름" />
+
+
+        <TextView
+            android:id="@+id/sosText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="209dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="11sp"
+            android:textColor="#6f6f6f"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/sosName"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="메세지 내용" />
+
+        <TextView
+            android:id="@+id/sosTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="250dp"
+            android:layout_marginEnd="40dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="11sp"
+            android:textColor="#6f6f6f"
+            android:textSize="11sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toStartOf="@+id/sosName2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="시간" />
+
+        <TextView
+            android:id="@+id/sosName2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="250dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="11sp"
+            android:textColor="#6f6f6f"
+            android:textSize="11sp"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="이름" />
+
+
+        <TextView
+            android:id="@+id/sosText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="250dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="11sp"
+            android:textColor="#6f6f6f"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/sosName2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="메세지 내용" />
+
+        <TextView
+            android:id="@+id/cctvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="330dp"
+            android:textColor="#3e4f87"
+            android:text="실시간 현장상황"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/area_a_btn"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="75dp"
+            android:layout_marginTop="375dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/area_btn"
+            android:text="MIC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/area_b_btn"
+            android:layout_width="120dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="375dp"
+            android:layout_marginEnd="75dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/area_btn"
+            android:text="MIC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/cctvarea_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="390dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/left_arrowbtn"
+            android:text="MIC"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/cctvarea_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="390dp"
+            android:layout_marginEnd="42dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/right_arrowbtn"
+            android:text="MIC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/wearherTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="500dp"
+            android:textColor="#3e4f87"
+            android:text="오늘의 날씨"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/cityView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:layout_marginTop="550dp"
+            android:layout_marginEnd="80dp"
+            android:text="서울"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="100dp"/>
-
-        <TextView
-            android:id="@+id/weatherView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/tempView"
-            app:layout_constraintStart_toStartOf="@+id/cityView"
-            app:layout_constraintTop_toBottomOf="@+id/cityView" />
+            app:layout_constraintEnd_toStartOf="@+id/tempView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tempView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="550dp"
+            android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/cityView"
-            app:layout_constraintTop_toBottomOf="@+id/cityView" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/weathericon"
-            android:layout_width="300dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="105dp"
+            android:layout_height="130dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="476dp"
+            app:layout_constraintStart_toEndOf="@+id/tempView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/mainWorker"
+            android:layout_width="79dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="620dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/worker_mainbtn"
+            android:text="근무자 관리"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tempView"
-            />
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/mainsalary"
+            android:layout_width="79dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="620dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/salary_mainbtn"
+            android:text="급여내역"
+            app:layout_constraintStart_toEndOf="@+id/mainWorker"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/mainCalender"
+            android:layout_width="79dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="620dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/calender_mainbtn"
+            android:text="작업 일정표"
+            app:layout_constraintEnd_toStartOf="@+id/mainNotification"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/mainNotification"
+            android:layout_width="79dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="620dp"
+            android:layout_marginEnd="30dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/notification_mainbtn"
+            android:text="공지사항"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/area_a"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="393dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="7sp"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/area_a_btn"
+            app:layout_constraintStart_toStartOf="@+id/area_a_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="A구역" />
+
+        <TextView
+            android:id="@+id/area_b"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="393dp"
+            android:gravity="center_horizontal"
+            android:lineSpacingExtra="7sp"
+            android:textColor="#ffffff"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/area_b_btn"
+            app:layout_constraintStart_toStartOf="@+id/area_b_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="B구역" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
