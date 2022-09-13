@@ -14,37 +14,27 @@ import java.util.*
 class SalaryViewHolder(val binding : ItemSalaryBinding) : RecyclerView.ViewHolder(binding.root)
 class SalaryAdapter (val context : Context, val arr : JSONArray) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int {
-        return arr.length()?:0
+        return arr.length() ?: 0
     }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return SalaryViewHolder(ItemSalaryBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return SalaryViewHolder(
+            ItemSalaryBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val binding = (holder as SalaryViewHolder).binding
 
         val salary = arr[position] as JSONObject
 
-        val worker_start=salary.getString("worker_start")
-        val start_format=SimpleDateFormat("H:mm:ss").parse(worker_start)
-        val start: Long = start_format.getTime()
-        val worker_end=salary.getString("worker_end")
-        val end_format=SimpleDateFormat("H:mm:ss").parse(worker_end)
-        val end: Long = end_format.getTime()
-        val diff: Long = (end - start) / 60000
-        val hour:Long=diff/60
-        val min:Long=diff%60
-
-        binding.itemWorkertime.text = hour.toString()+"시간"+min.toString()+"분"
-
-
-        val worekr_salary=salary.getString("salary")
-        val insert_date=salary.getString("insert_date")
-
-
-        //binding.itemName.text = salary.getString("")
-        //binding.itemEmplId.text = salary.getString("")
-        //binding.itemTotal.text = salary.getString("")
-
-
+        binding.itemName.text = salary.getString("worker_name")
+        binding.itemEmplId.text = salary.getString("worker_id")
+        binding.itemWorkertime.text = (salary.getString("work_time").toInt() / 60).toString() + "시간"
+        binding.itemTotal.text = salary.getString("work_salary") + "원"
     }
 }

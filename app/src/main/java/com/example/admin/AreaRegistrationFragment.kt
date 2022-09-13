@@ -207,7 +207,7 @@ class AreaRegistrationFragment : Fragment() {
                                         BuildConfig.API_KEY+"register_work.php",
                                         Response.Listener<String>{ response ->
                                             val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-                                                Request.Method.GET,
+                                                Request.Method.POST,
                                                 BuildConfig.API_KEY + "read_workers.php",
                                                 null,
                                                 Response.Listener<JSONArray> { response ->
