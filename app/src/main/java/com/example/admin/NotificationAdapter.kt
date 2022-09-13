@@ -2,18 +2,13 @@ package com.example.admin
 
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
 import android.os.Build
-import android.util.Log
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.core.util.remove
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.Response
@@ -22,6 +17,7 @@ import com.android.volley.toolbox.Volley
 import com.example.admin.databinding.ItemNotificationBinding
 import org.json.JSONArray
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 
 class NotificationViewHolder(val binding : ItemNotificationBinding) : RecyclerView.ViewHolder(binding.root)
 class NotificationAdapter(val context : Context, val arr : JSONArray) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -46,8 +42,10 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
         binding.itemTitle.text = notification.getString("notification_title")
         binding.itemContent.text = notification.getString("notification_contents")
         binding.itemName.text="관리자 "+notification.getString("notification_writer")
-        val insert_date = notification.getString("insert_date")
-        val date = insert_date.substring(0, insert_date.indexOf(" "))
+
+        val insert_date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(notification.getString("insert_date"))
+        val date = SimpleDateFormat("yyyy.MM.dd").format(insert_date)
+
         binding.itemDate.text=date
 
         binding.deleteImg.setOnClickListener {

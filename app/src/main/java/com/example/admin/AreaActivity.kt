@@ -23,7 +23,7 @@ class AreaActivity : AppCompatActivity() {
     class FragmentAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity){
         val fragments : List<Fragment>
         init {
-            fragments = listOf(WorkersFragment(), AreaRegistrationFragment(), AreaCheckFragment())
+            fragments = listOf(WorkersFragment(), AreaRegistrationFragment())
         }
 
         override fun getItemCount(): Int {

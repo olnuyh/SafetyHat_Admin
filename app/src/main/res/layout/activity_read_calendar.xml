@@ -31,13 +31,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></View>
-    <shape
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:shape="rectangle">
-        <stroke
-            android:width="2dp"
-            android:color="#b8e2de" />
-    </shape>
 
     <View
         android:layout_width="335dp"
@@ -47,8 +40,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></View>
-
-
 
     <CalendarView
         android:id="@+id/calendarView"
