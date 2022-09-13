@@ -26,7 +26,6 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
     private var selectedItems: SparseBooleanArray = SparseBooleanArray()
 
 
-
     override fun getItemCount(): Int {
         return arr.length()?:0
     }
@@ -92,14 +91,8 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
             }
 
             dialog.show()
-//            val dialog = DeleteNotificationDialog(context)
-//            dialog.showDia()
         }
 
-//        binding.ivItemUpImg.setOnClickListener {
-//            binding.ivItemUpImg.visibility=View.GONE
-//            binding.ivItemDownImg.visibility=View.VISIBLE
-//        }
 
         binding.ivItemUpImg.setOnClickListener {
             if (selectedItems.get(position)) {
@@ -115,10 +108,7 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
         binding.ivItemDownImg.setOnClickListener {
 
             if (selectedItems.get(position)) {
-                // VISIBLE -> INVISIBLE
-//                selectedItems.delete(position)
-//
-//                binding.clItemExpand.visibility = View.GONE
+
             } else {
                 // INVISIBLE -> VISIBLE
                 selectedItems.put(position, true)
