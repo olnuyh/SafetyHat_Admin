@@ -22,7 +22,7 @@ class ReadNotificationActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val readNotificationRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-            Request.Method.GET,
+            Request.Method.POST,
             BuildConfig.API_KEY + "read_notification.php",
             null,
             Response.Listener<JSONArray> { response ->
@@ -36,8 +36,6 @@ class ReadNotificationActivity : AppCompatActivity() {
 
         val queue = Volley.newRequestQueue(this)
         queue.add(readNotificationRequest)
-
-
 
         binding.goToRegisterNotificationBtn.setOnClickListener {
             finish()
