@@ -38,7 +38,7 @@
         <activity android:name=".SalaryActivity" />
         <activity android:name=".WriteCalendarActivity" />
         <activity android:name=".ReadNotificationActivity" />
-        <activity android:name=".AlarmActivity" />
+        <activity android:name=".SosActivity" />
         <activity
             android:name=".CctvActivity"
             android:exported="true"></activity>

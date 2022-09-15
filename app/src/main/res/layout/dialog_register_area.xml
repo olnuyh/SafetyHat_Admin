@@ -60,8 +60,8 @@
         android:layout_marginBottom="38dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <TextView
-        android:id="@+id/textView2"
+    <EditText
+        android:id="@+id/dialogEditArea"
         android:layout_width="51dp"
         android:layout_height="23dp"
         android:layout_marginStart="94dp"
