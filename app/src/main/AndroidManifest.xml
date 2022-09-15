@@ -18,9 +18,6 @@
         android:theme="@style/Theme.Admin"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".BaseActivity"
-            android:exported="false" />
-        <activity
             android:name=".WriteNotificationActivity"
             android:exported="false" />
         <activity

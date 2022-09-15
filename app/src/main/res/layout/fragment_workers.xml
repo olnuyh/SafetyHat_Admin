@@ -5,73 +5,82 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="300dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="37dp"
+            android:background="@drawable/search_stroke"
+            android:hint="Search.."
             android:id="@+id/searchText"/>
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="검색"
-            android:id="@+id/searchBtn"/>
+
+        <ImageButton
+            android:id="@+id/searchBtn"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="26dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/search_btn"
+            android:text="검색" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <Spinner
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:id="@+id/areaFilterSpinner"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="구역"/>
+            android:layout_width="260dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="77dp"
+            android:background="@drawable/search_stroke"
+            android:hint="구역"
+            android:id="@+id/areaFilterSpinner1"/>
     </LinearLayout>
 
+
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:layout_marginStart="37dp"
         android:orientation="horizontal">
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="82dp"
+            android:layout_height="32dp"
+            android:background="#daeeec"
             android:gravity="center"
             android:text="사원번호"/>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="82dp"
+            android:layout_height="32dp"
+            android:background="#daeeec"
             android:gravity="center"
             android:text="이름"/>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="82dp"
+            android:layout_height="32dp"
+            android:background="#daeeec"
             android:gravity="center"
             android:text="출결"/>
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="82dp"
+            android:layout_height="32dp"
+            android:background="#daeeec"
             android:gravity="center"
             android:text="구역"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
         android:id="@+id/areaWorkersRecyclerView"/>
+
 </LinearLayout>
