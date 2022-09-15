@@ -149,7 +149,7 @@ class WorkersFragment : Fragment(){
                         val queue = Volley.newRequestQueue(areaActivity)
 
                         val binding3 = DialogDeleteAreaBinding.inflate(layoutInflater)
-                        binding3.dialogDeleteArea.setText(MyApplication.areaList[position] + "구역")
+                        binding3.dialogDeleteArea.setText(MyApplication.areaList[position] + "구역을")
                         AlertDialog.Builder(areaActivity).run {
                             setTitle("삭제할 구역 입력")
                             setView(binding3.root)

@@ -40,7 +40,7 @@
             android:layout_marginStart="77dp"
             android:background="@drawable/search_stroke"
             android:hint="구역"
-            android:id="@+id/areaFilterSpinner1"/>
+            android:id="@+id/areaFilterSpinner"/>
     </LinearLayout>
 
 

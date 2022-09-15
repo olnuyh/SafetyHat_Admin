@@ -45,7 +45,8 @@ class MainActivity : AppCompatActivity() {
         binding.mainDrawerView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menuSos -> {
-
+                    val intent = Intent(this, SosActivity::class.java)
+                    startActivity(intent)
                 }
                 R.id.menuCctv -> {
                     val intent = Intent(this, CctvActivity::class.java)

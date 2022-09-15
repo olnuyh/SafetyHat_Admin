@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.databinding.ActivityAlarmBinding
 
 
-class AlarmActivity : AppCompatActivity(){
+class SosActivity : AppCompatActivity(){
     lateinit var binding: ActivityAlarmBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

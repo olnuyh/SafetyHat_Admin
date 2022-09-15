@@ -19,19 +19,20 @@
         app:layout_constraintStart_toStartOf="parent"/>
 
     <TextView
+        android:id="@+id/dialogDeleteArea"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="17sp"
-        android:textColor="#de000000"
+        android:layout_marginTop="62dp"
+        android:fontFamily="@font/a12"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="9sp"
         android:text="    구역을"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="62dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#de000000"
+        android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/a12"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
