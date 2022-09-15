@@ -5,33 +5,34 @@
     android:orientation="vertical">
 
 
-
     <LinearLayout
-        android:layout_width="200dp"
-        android:layout_height="23dp"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
         android:orientation="horizontal"
-        android:layout_marginTop="35dp" >
+        android:layout_gravity="center"
+        android:layout_marginTop="187dp">
         <Spinner
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="100dp"
+            android:layout_height="28dp"
+            android:background="@drawable/graph_stroke2"
             android:id="@+id/areaSpinner"/>
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_width="50dp"
+            android:layout_height="28dp"
             android:gravity="center"
+            android:background="@drawable/graph_stroke2"
             android:text="구역"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
         <EditText
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_weight="0"
             android:textAlignment="center"
             android:inputType="number"
@@ -44,8 +45,8 @@
             android:gravity="center"
             android:text="시"/>
         <EditText
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_weight="0"
             android:textAlignment="center"
             android:inputType="number"
@@ -62,10 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="~"/>
+            android:text="-"/>
         <EditText
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_weight="0"
             android:textAlignment="center"
             android:inputType="number"
@@ -78,8 +79,8 @@
             android:gravity="center"
             android:text="시"/>
         <EditText
-            android:layout_width="23dp"
-            android:layout_height="23dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_weight="0"
             android:textAlignment="center"
             android:inputType="number"
@@ -96,7 +97,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
         <EditText
             android:layout_width="310dp"
@@ -121,7 +122,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="14dp" >
+        android:layout_marginTop="10dp" >
         <CheckBox
             android:id="@+id/selectAllChBoxes"
             android:layout_width="46dp"
@@ -160,20 +161,21 @@
             android:text="구역"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="321dp"
+        android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_gravity="center"
         android:id="@+id/readWorkersRecyclerView"/>
 
 
-    <Button
+    <ImageButton
         android:id="@+id/registerWorkBtn"
         android:layout_width="138dp"
         android:layout_height="40dp"
-        android:background="#29000000"
+        android:background="@android:color/transparent"
         android:layout_gravity="center"
         android:text="등록"
-        android:textColor="#3c3c3c"
+        android:src="@drawable/enter_btn"
         android:layout_marginTop="41dp"/>
+
 </LinearLayout>
 
