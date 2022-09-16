@@ -46,7 +46,7 @@ class FirebaseMessagingServiceUtil: FirebaseMessagingService(){
         var body = remoteMessage.notification!!.body
 
 
-        var intent = Intent(this, MainActivity::class.java)
+        var intent = Intent(this, CctvActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, id, intent, PendingIntent.FLAG_ONE_SHOT)
 
