@@ -6,32 +6,36 @@
     <TextView
         android:id="@+id/itemEmplId"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="33dp"
         android:layout_weight="1"
+        android:background="@drawable/graph_stroke"
         android:hint ="사원번호"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/itemName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="33dp"
         android:layout_weight="1"
+        android:background="@drawable/graph_stroke"
         android:hint ="이름"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/itemAttendance"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="33dp"
         android:layout_weight="1"
+        android:background="@drawable/graph_stroke"
         android:hint ="출결"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/itemArea"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="33dp"
         android:layout_weight="1"
+        android:background="@drawable/graph_stroke"
         android:hint ="구역"
         android:gravity="center"/>
 </LinearLayout>

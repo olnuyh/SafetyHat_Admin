@@ -246,7 +246,7 @@
 
         <ImageButton
             android:id="@+id/mainWorker"
-            android:layout_width="79dp"
+            android:layout_width="82dp"
             android:layout_height="85dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="620dp"
@@ -258,9 +258,9 @@
 
         <ImageButton
             android:id="@+id/mainsalary"
-            android:layout_width="79dp"
+            android:layout_width="82dp"
             android:layout_height="85dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="620dp"
             android:background="@android:color/transparent"
             android:src="@drawable/salary_mainbtn"
@@ -270,10 +270,10 @@
 
         <ImageButton
             android:id="@+id/mainCalender"
-            android:layout_width="79dp"
+            android:layout_width="82dp"
             android:layout_height="85dp"
             android:layout_marginTop="620dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             android:src="@drawable/calender_mainbtn"
             android:text="작업 일정표"
@@ -282,7 +282,7 @@
 
         <ImageButton
             android:id="@+id/mainNotification"
-            android:layout_width="79dp"
+            android:layout_width="82dp"
             android:layout_height="85dp"
             android:layout_marginTop="620dp"
             android:layout_marginEnd="30dp"
