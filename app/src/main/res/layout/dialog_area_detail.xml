@@ -9,23 +9,26 @@
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/graph_stroke"
             android:text="사원번호"/>
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/graph_stroke"
             android:text="이름"/>
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="33dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/graph_stroke"
             android:text="출결"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView

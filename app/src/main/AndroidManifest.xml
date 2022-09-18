@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Admin"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".WriteNotificationActivity"
             android:exported="false" />
