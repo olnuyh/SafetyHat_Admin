@@ -251,7 +251,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="620dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/worker_mainbtn"
+            android:src="@drawable/main_worker"
             android:text="근무자 관리"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -263,7 +263,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="620dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/salary_mainbtn"
+            android:src="@drawable/main_salary"
             android:text="급여내역"
             app:layout_constraintStart_toEndOf="@+id/mainWorker"
             app:layout_constraintTop_toTopOf="parent" />
@@ -275,7 +275,7 @@
             android:layout_marginTop="620dp"
             android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/calendar_mainbtn"
+            android:src="@drawable/main_calendar"
             android:text="작업 일정표"
             app:layout_constraintEnd_toStartOf="@+id/mainNotification"
             app:layout_constraintTop_toTopOf="parent" />
@@ -287,7 +287,7 @@
             android:layout_marginTop="620dp"
             android:layout_marginEnd="30dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/notification_mainbtn"
+            android:src="@drawable/main_notification"
             android:text="공지사항"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
