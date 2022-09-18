@@ -222,6 +222,26 @@ class MainActivity : AppCompatActivity() {
 
         val queue4 = Volley.newRequestQueue(this)
         queue4.add(weatherRequest)
+
+        binding.mainWorker.setOnClickListener {
+            val intent = Intent(this, AreaActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.mainSalary.setOnClickListener {
+            val intent = Intent(this, SalaryActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.mainCalendar.setOnClickListener {
+            val intent = Intent(this, ReadCalendarActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.mainNotification.setOnClickListener {
+            val intent = Intent(this, ReadNotificationActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

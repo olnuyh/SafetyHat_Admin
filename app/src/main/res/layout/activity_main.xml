@@ -257,7 +257,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/mainsalary"
+            android:id="@+id/mainSalary"
             android:layout_width="82dp"
             android:layout_height="85dp"
             android:layout_marginStart="8dp"
@@ -269,7 +269,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/mainCalender"
+            android:id="@+id/mainCalendar"
             android:layout_width="82dp"
             android:layout_height="85dp"
             android:layout_marginTop="620dp"
