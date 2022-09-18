@@ -9,14 +9,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="152dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal">
         <EditText
             android:layout_width="300dp"
             android:layout_height="33dp"
             android:layout_marginStart="37dp"
             android:background="@drawable/search_stroke"
-            android:hint="Search.."
+            android:hint="사원번호 / 이름"
             android:id="@+id/searchText"/>
 
         <ImageButton
@@ -45,10 +45,11 @@
 
 
     <LinearLayout
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
         android:layout_marginStart="37dp"
+        android:layout_marginEnd="46dp"
         android:orientation="horizontal">
         <TextView
             android:layout_width="82dp"
@@ -78,9 +79,10 @@
             android:text="구역"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
+        android:layout_marginEnd="46dp"
         android:id="@+id/areaWorkersRecyclerView"/>
 
 </LinearLayout>

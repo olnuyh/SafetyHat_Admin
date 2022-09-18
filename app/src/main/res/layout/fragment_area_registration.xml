@@ -26,7 +26,6 @@
             android:layout_width="50dp"
             android:layout_height="28dp"
             android:gravity="center"
-            android:background="@drawable/graph_stroke2"
             android:text="구역"/>
     </LinearLayout>
 
@@ -110,7 +109,7 @@
             android:layout_height="33dp"
             android:layout_marginStart="35dp"
             android:background="@drawable/search_stroke"
-            android:hint="Search.."
+            android:hint="사원번호 / 이름"
             android:id="@+id/searchText"/>
 
         <ImageButton
@@ -124,8 +123,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="25dp"
         android:orientation="horizontal"
         android:layout_gravity="center"
         android:layout_marginTop="10dp" >
@@ -167,9 +168,11 @@
             android:text="구역"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="370dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_gravity="left"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="25dp"
         android:id="@+id/readWorkersRecyclerView"/>
 
 
