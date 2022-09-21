@@ -1,17 +1,13 @@
 package com.example.admin
 
-import android.Manifest
-import android.app.Activity
+
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.speech.RecognizerIntent
-import android.speech.SpeechRecognizer
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.admin.databinding.ActivitySosBinding
 import com.google.firebase.database.DataSnapshot
@@ -19,10 +15,10 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.util.ArrayList
 
 
 class SosActivity : AppCompatActivity(){
+    lateinit var toggle : ActionBarDrawerToggle
     lateinit var binding : ActivitySosBinding
     val database = Firebase.database("https://safetyhat-default-rtdb.asia-southeast1.firebasedatabase.app/")
     val ref = database.getReference("SosMessages")
@@ -33,6 +29,50 @@ class SosActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         binding = ActivitySosBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolBar)
+
+        toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.drawer_open, R.string.drawer_close)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        toggle.syncState()
+
+        binding.mainDrawerView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.menuSos -> {
+                    val intent = Intent(this, SosActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.menuCctv -> {
+                    val intent = Intent(this, CctvActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.menuArea -> {
+                    val intent = Intent(this, AreaActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.menuCalendar -> {
+                    val intent = Intent(this, ReadCalendarActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.menuNotification -> {
+                    val intent = Intent(this, ReadNotificationActivity::class.java)
+                    startActivity(intent)
+                }
+                R.id.menuSalary -> {
+                    val intent = Intent(this, SalaryActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            true
+        }
+
+        binding.logout.setOnClickListener {
+            MyApplication.prefs.clear()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
 
         binding.sosRecyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -56,4 +96,31 @@ class SosActivity : AppCompatActivity(){
         adapter = SosAdapter(this, messageList)
         binding.sosRecyclerView.adapter = adapter
     }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(toggle.onOptionsItemSelected(item)) return true
+
+        return when (item.itemId) {
+            R.id.action_home -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> {
+                super.onOptionsItemSelected(item)
+            }
+        }
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val menuInflater = menuInflater
+        menuInflater.inflate(R.menu.home,menu)
+        return true
+    }
+
+
+
+
+
 }

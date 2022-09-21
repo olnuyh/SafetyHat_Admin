@@ -25,7 +25,5 @@
         android:icon="@drawable/money"
         android:title="급여"/>
 
-    <item
-        android:id="@+id/logout"
-        android:title="로그아웃"/>
+
 </menu>

@@ -140,6 +140,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="메세지 내용" />
 
+
         <TextView
             android:id="@+id/cctvTitle"
             android:layout_width="wrap_content"
@@ -160,7 +161,6 @@
             android:layout_marginTop="375dp"
             android:background="@android:color/transparent"
             android:src="@drawable/area_btn"
-            android:text="MIC"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -172,7 +172,6 @@
             android:layout_marginEnd="75dp"
             android:background="@android:color/transparent"
             android:src="@drawable/area_btn"
-            android:text="MIC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -184,7 +183,6 @@
             android:layout_marginTop="390dp"
             android:background="@android:color/transparent"
             android:src="@drawable/left_arrowbtn"
-            android:text="MIC"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -196,7 +194,6 @@
             android:layout_marginEnd="42dp"
             android:background="@android:color/transparent"
             android:src="@drawable/right_arrowbtn"
-            android:text="MIC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -331,6 +328,35 @@
         android:id="@+id/main_drawer_view"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/navigation_menu"/>
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="#7e84a3"
+        app:itemTextColor="#99000000"
+        app:itemTextAppearance="@font/robotomedium">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingTop="12dp"
+            android:paddingBottom="16dp"
+            android:background="@color/main">
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ff0000"
+                android:drawableLeft="@drawable/logout_icon"
+                android:text="로그아웃"
+                android:fontFamily="@font/a12"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="5sp"/>
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
