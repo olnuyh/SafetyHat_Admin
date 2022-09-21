@@ -17,7 +17,7 @@
         android:layout_marginRight="213dp"
         android:layout_marginTop="26dp"
         android:background="@drawable/tablayout_background"
-        app:tabBackground="@drawable/tablayout_selector"
+        app:tabBackground="@drawable/area_tab_btn"
         app:tabIndicatorHeight="0dp"
         app:tabTextAppearance="@style/tab_text"
         app:tabSelectedTextColor="#000000"/>

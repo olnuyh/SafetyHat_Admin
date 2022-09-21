@@ -8,7 +8,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="33dp"
-        android:background="@drawable/graph_stroke"
+        android:fontFamily="@font/a12"
         android:text="이름"
         android:gravity="center"/>
     <TextView
@@ -16,7 +16,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="33dp"
-        android:background="@drawable/graph_stroke"
+        android:fontFamily="@font/a12"
         android:text="사원번호"
         android:gravity="center"/>
     <TextView
@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="33dp"
-        android:background="@drawable/graph_stroke"
+        android:fontFamily="@font/a12"
         android:text="근무시간"
         android:gravity="center"/>
     <TextView
@@ -32,7 +32,7 @@
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="33dp"
-        android:background="@drawable/graph_stroke"
+        android:fontFamily="@font/a12"
         android:text="총 합계"
         android:gravity="center"/>
 </LinearLayout>

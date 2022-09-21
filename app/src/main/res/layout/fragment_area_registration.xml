@@ -26,6 +26,7 @@
             android:layout_width="50dp"
             android:layout_height="28dp"
             android:gravity="center"
+            android:fontFamily="@font/a12"
             android:text="구역"/>
     </LinearLayout>
 
@@ -48,6 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/a12"
             android:text="시"/>
         <EditText
             android:layout_width="28dp"
@@ -62,6 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/a12"
             android:text="분"/>
         <TextView
             android:layout_width="0dp"
@@ -82,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/a12"
             android:text="시"/>
         <EditText
             android:layout_width="28dp"
@@ -96,6 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:fontFamily="@font/a12"
             android:text="분"/>
     </LinearLayout>
 
@@ -141,6 +146,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/graph_stroke"
+            android:fontFamily="@font/a12"
             android:text="사원번호"/>
 
         <TextView
@@ -149,6 +155,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/graph_stroke"
+            android:fontFamily="@font/a12"
             android:text="이름"/>
 
         <TextView
@@ -157,6 +164,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/graph_stroke"
+            android:fontFamily="@font/a12"
             android:text="출결"/>
 
         <TextView
@@ -165,13 +173,14 @@
             android:layout_weight="1"
             android:gravity="center"
             android:background="@drawable/graph_stroke"
+            android:fontFamily="@font/a12"
             android:text="구역"/>
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_gravity="left"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="25dp"
         android:id="@+id/readWorkersRecyclerView"/>
 

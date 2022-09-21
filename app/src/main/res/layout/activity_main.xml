@@ -29,6 +29,7 @@
             android:layout_marginStart="45dp"
             android:layout_marginTop="130dp"
             android:textColor="#3e4f87"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:text="긴급연락"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +45,7 @@
             android:textColor="#6f6f6f"
             android:textSize="13sp"
             android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_round"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="최근 메세지" />
@@ -148,6 +150,7 @@
             android:layout_marginTop="330dp"
             android:textColor="#3e4f87"
             android:text="실시간 현장상황"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -209,6 +212,7 @@
             android:textColor="#3e4f87"
             android:text="오늘의 날씨"
             android:textSize="14sp"
+            android:fontFamily="@font/nanumsquare_round_b"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -301,6 +305,7 @@
             android:lineSpacingExtra="7sp"
             android:textColor="#ffffff"
             android:textSize="17sp"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/area_a_btn"
             app:layout_constraintStart_toStartOf="@+id/area_a_btn"
@@ -317,6 +322,7 @@
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:textStyle="bold"
+            android:fontFamily="@font/nanumsquare_round_b"
             app:layout_constraintEnd_toEndOf="@+id/area_b_btn"
             app:layout_constraintStart_toStartOf="@+id/area_b_btn"
             app:layout_constraintTop_toTopOf="parent"

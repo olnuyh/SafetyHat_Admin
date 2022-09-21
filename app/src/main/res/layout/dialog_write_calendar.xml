@@ -24,6 +24,7 @@
         android:layout_marginTop="160dp"
         android:text="시작 날짜"
         android:textSize="13sp"
+        android:fontFamily="@font/a13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="27dp"
         android:layout_marginTop="235dp"
+        android:fontFamily="@font/a13"
         android:text="종료 날짜"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,6 +93,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginTop="60dp"
         android:text="일정 내용"
+        android:fontFamily="@font/a13"
         android:textSize="13sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

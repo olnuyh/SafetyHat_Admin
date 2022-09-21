@@ -23,6 +23,7 @@
         android:layout_marginTop="99dp"
         android:layout_marginBottom="60dp"
         android:hint="이름"
+        android:fontFamily="@font/a14"
         android:textColor="#ffffff"
         android:textSize="30dp"
         android:textStyle="bold" />
