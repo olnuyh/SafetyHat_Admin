@@ -37,7 +37,7 @@
                 android:layout_marginTop="27dp"
                 app:tabIndicatorHeight="0dp"
                 app:tabTextAppearance="@style/tab_text"
-                android:tabBackground="@drawable/tablayout_selector"
+                app:tabBackground="@drawable/tablayout_selector"
                 app:tabSelectedTextColor="#000000"/>
             <androidx.viewpager2.widget.ViewPager2
                 android:layout_width="match_parent"
