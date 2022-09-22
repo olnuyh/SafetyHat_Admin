@@ -2,31 +2,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app = "http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="203dp"
     android:id="@+id/navigationHeader"
-    android:background="@color/purple_500">
+    android:background="@color/main">
 
     <ImageView
         android:id="@+id/navigationProfile"
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        app:srcCompat="@drawable/profile"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/profile_default"/>
 
     <TextView
         android:id="@+id/navigationName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="99dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="134dp"
         android:hint="이름"
-        android:fontFamily="@font/a14"
         android:textColor="#ffffff"
-        android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="normal"
+        android:textSize="20sp"
+        android:letterSpacing="0.01"
+        android:lineSpacingExtra="4sp"
+        android:fontFamily="@font/a14"/>
 
 
 

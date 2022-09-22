@@ -38,9 +38,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolBar)
 
+
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.drawer_open, R.string.drawer_close)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         toggle.syncState()
+
 
         binding.mainDrawerView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -68,14 +71,15 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, SalaryActivity::class.java)
                     startActivity(intent)
                 }
-                R.id.logout -> {
-                    MyApplication.prefs.clear()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
             }
             true
+        }
+
+        binding.logout.setOnClickListener {
+            MyApplication.prefs.clear()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
@@ -242,6 +246,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ReadNotificationActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 
 
@@ -250,6 +256,7 @@ class MainActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
 
 
 //     getFCMToken()
