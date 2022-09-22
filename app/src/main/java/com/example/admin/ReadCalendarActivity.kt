@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -92,10 +93,19 @@ class ReadCalendarActivity : AppCompatActivity() {
                         for (i in 0 until array.length()) {
                             val textView = TextView(this)
                             val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                            layoutParams.setMargins(100, 40, 0, 0)
+                            layoutParams.setMargins(130, 40, 0, 0)
                             textView.layoutParams = layoutParams
                             textView.text = array.getJSONObject(i).getString("calendar_contents")
                             binding.scheduleLayout.addView(textView)
+
+
+                            val drawable = resources.getDrawable(R.drawable.calendar_point)
+                            val imageView= ImageView(this)
+                            val layoutParams2 = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+                            layoutParams2.setMargins(50, -45, 0, 0)
+                            imageView.layoutParams = layoutParams2
+                            imageView.setImageDrawable(drawable)
+                            binding.scheduleLayout.addView(imageView)
                         }
                         binding.scheduleLayout.visibility = View.VISIBLE
                     }
