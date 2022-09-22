@@ -15,7 +15,7 @@
             android:layout_width="300dp"
             android:layout_height="33dp"
             android:layout_marginStart="37dp"
-            android:background="@drawable/search_stroke"
+            android:background="@drawable/stroke_round"
             android:hint="사원번호 / 이름"
             android:id="@+id/searchText"/>
 
@@ -38,7 +38,7 @@
             android:layout_width="335dp"
             android:layout_height="33dp"
             android:layout_marginStart="37dp"
-            android:background="@drawable/search_stroke"
+            android:background="@drawable/stroke_round"
             android:hint="구역"
             android:id="@+id/areaFilterSpinner"/>
     </LinearLayout>

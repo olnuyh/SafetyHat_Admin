@@ -110,10 +110,10 @@
         android:layout_marginTop="40dp"
         android:orientation="horizontal">
         <EditText
-            android:layout_width="310dp"
+            android:layout_width="280dp"
             android:layout_height="33dp"
-            android:layout_marginStart="35dp"
-            android:background="@drawable/search_stroke"
+            android:layout_marginStart="50dp"
+            android:background="@drawable/stroke_round"
             android:hint="사원번호 / 이름"
             android:id="@+id/searchText"/>
 
@@ -121,7 +121,7 @@
             android:id="@+id/searchBtn"
             android:layout_width="40dp"
             android:layout_height="35dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginRight="16dp"
             android:background="@android:color/transparent"
             android:src="@drawable/search_btn"
             android:text="검색" />

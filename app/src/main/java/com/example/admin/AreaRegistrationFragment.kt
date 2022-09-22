@@ -52,7 +52,6 @@ class AreaRegistrationFragment : Fragment() {
             null,
             Response.Listener<JSONArray> { response ->
                 area = arrayListOf<String>()
-                area.add("구역선택")
                 for (i in 0 until response.length()){
                     val obj = response[i] as JSONObject
                     val name = obj.getString("area_name")

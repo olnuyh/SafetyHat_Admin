@@ -218,7 +218,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="550dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginEnd="100dp"
             android:text="서울"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -240,16 +240,16 @@
             android:id="@+id/weathericon"
             android:layout_width="105dp"
             android:layout_height="130dp"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="476dp"
             app:layout_constraintStart_toEndOf="@+id/tempView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/mainWorker"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
-            android:layout_marginStart="30dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="620dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_worker"
@@ -259,9 +259,9 @@
 
         <ImageButton
             android:id="@+id/mainSalary"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="620dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_salary"
@@ -271,26 +271,26 @@
 
         <ImageButton
             android:id="@+id/mainCalendar"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="620dp"
-            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_calendar"
             android:text="작업 일정표"
-            app:layout_constraintEnd_toStartOf="@+id/mainNotification"
+            app:layout_constraintStart_toEndOf="@+id/mainSalary"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/mainNotification"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="620dp"
-            android:layout_marginEnd="30dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_notification"
             android:text="공지사항"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mainCalendar"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
