@@ -1,21 +1,30 @@
-package com.tistory.bongcando.kotlinProject
+package com.example.admin
 
 import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import androidx.appcompat.app.AppCompatActivity
 import com.example.admin.MainActivity
 
 class SplashActivity : AppCompatActivity() {
 
-    val SPLASH_VIEW_TIME: Long = 2000 //2초간 스플래시 화면을 보여줌 (ms)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_splash)
 
-        Handler().postDelayed({ //delay를 위한 handler
-            startActivity(Intent(this,MainActivity::class.java))
+        Handler().postDelayed({
+            val intent = Intent(this, MainActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+            startActivity(intent)
             finish()
-        }, SPLASH_VIEW_TIME)
+        },DURATION)
+
+    }
+    companion object {
+        private const val DURATION : Long = 3000
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
