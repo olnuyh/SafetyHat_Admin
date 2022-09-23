@@ -1,17 +1,7 @@
 package com.example.admin
 
-import android.Manifest
-import android.app.Activity
-import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import android.speech.RecognizerIntent
-import android.speech.SpeechRecognizer
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.admin.databinding.ActivitySosBinding
 import com.google.firebase.database.DataSnapshot
@@ -19,7 +9,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.util.ArrayList
 
 
 class SosActivity : AppCompatActivity(){
@@ -40,12 +29,28 @@ class SosActivity : AppCompatActivity(){
             override fun onDataChange(snapshot: DataSnapshot) {
                 messageList.clear()
 
+                var readCheckMap: MutableMap<String, Any> = HashMap()
+
                 for(msg in snapshot.children){
-                    val message = msg.getValue(SosMessage::class.java)
-                    messageList.add(message!!)
+                    val key = msg.key
+                    val message_before = msg.getValue(SosMessage::class.java)
+                    val message_after = msg.getValue(SosMessage::class.java)
+                    message_after!!.isRead = true
+
+                    readCheckMap.put(key!!, message_after!!)
+
+                    messageList.add(message_before!!)
                 }
 
-                adapter.notifyDataSetChanged()
+                if(!messageList.get(messageList.size - 1).isRead){
+                    ref.updateChildren(readCheckMap).addOnCompleteListener {
+                        adapter.notifyDataSetChanged()
+                        binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
+                    }
+                }else{
+                    adapter.notifyDataSetChanged()
+                    binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -55,5 +60,9 @@ class SosActivity : AppCompatActivity(){
 
         adapter = SosAdapter(this, messageList)
         binding.sosRecyclerView.adapter = adapter
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }

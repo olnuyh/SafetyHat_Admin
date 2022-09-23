@@ -35,110 +35,44 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/recentMessageTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="170dp"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="11sp"
+            android:text="최근 메세지"
             android:textColor="#6f6f6f"
             android:textSize="13sp"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="최근 메세지" />
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
-            android:id="@+id/sosTime"
+            android:id="@+id/recentMessageNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="209dp"
-            android:layout_marginEnd="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="170dp"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="11sp"
+            android:text="숫자"
             android:textColor="#6f6f6f"
-            android:textSize="11sp"
+            android:textSize="13sp"
             android:textStyle="normal"
-            app:layout_constraintEnd_toStartOf="@+id/sosName"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="시간" />
+            app:layout_constraintStart_toEndOf="@+id/recentMessageTxt"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/sosName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="209dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="11sp"
-            android:textColor="#6f6f6f"
-            android:textSize="11sp"
-            android:textStyle="normal"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mainRecyclerView"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="이름" />
-
-
-        <TextView
-            android:id="@+id/sosText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="209dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="11sp"
-            android:textColor="#6f6f6f"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/sosName"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="메세지 내용" />
-
-        <TextView
-            android:id="@+id/sosTime2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="250dp"
-            android:layout_marginEnd="40dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="11sp"
-            android:textColor="#6f6f6f"
-            android:textSize="11sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toStartOf="@+id/sosName2"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="시간" />
-
-        <TextView
-            android:id="@+id/sosName2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="140dp"
-            android:layout_marginTop="250dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="11sp"
-            android:textColor="#6f6f6f"
-            android:textSize="11sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="이름" />
-
-
-        <TextView
-            android:id="@+id/sosText2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="250dp"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="11sp"
-            android:textColor="#6f6f6f"
-            android:textSize="11sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/sosName2"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="메세지 내용" />
+            app:layout_constraintTop_toBottomOf="@+id/recentMessageTxt" />
 
         <TextView
             android:id="@+id/cctvTitle"

@@ -1,5 +1,6 @@
 package com.example.admin
 
+import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -46,9 +47,9 @@ class FirebaseMessagingServiceUtil: FirebaseMessagingService(){
         var body = remoteMessage.notification!!.body
 
 
-        var intent = Intent(this, CctvActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-        val pendingIntent = PendingIntent.getActivity(this, id, intent, PendingIntent.FLAG_ONE_SHOT)
+        //var intent = Intent(this, CctvActivity::class.java)
+        //intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        //val pendingIntent = PendingIntent.getActivity(this, id, intent, PendingIntent.FLAG_ONE_SHOT)
 
         val channelId = "Channel ID"
         val soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
@@ -58,7 +59,8 @@ class FirebaseMessagingServiceUtil: FirebaseMessagingService(){
             .setContentText(body)
             .setAutoCancel(true)
             .setSound(soundUri)
-            .setContentIntent(pendingIntent)
+            .setPriority(Notification.PRIORITY_HIGH)
+            //.setContentIntent(pendingIntent)
 
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val channel = NotificationChannel(channelId, "Notice", NotificationManager.IMPORTANCE_HIGH)

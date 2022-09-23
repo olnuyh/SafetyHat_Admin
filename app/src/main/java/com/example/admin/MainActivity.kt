@@ -15,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
@@ -27,10 +28,21 @@ import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
 import com.bumptech.glide.Glide
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
     lateinit var toggle : ActionBarDrawerToggle
     lateinit var binding: ActivityMainBinding
+    val database = Firebase.database("https://safetyhat-default-rtdb.asia-southeast1.firebasedatabase.app/")
+    val ref = database.getReference("SosMessages")
+    val messageList = ArrayList<SosMessage>()
+    lateinit var adapter : TodaySosAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -146,6 +158,38 @@ class MainActivity : AppCompatActivity() {
         }
         val queue3 = Volley.newRequestQueue(this)
         queue3.add(mainRequest)
+
+        binding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        ref.addValueEventListener(object : ValueEventListener {
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun onDataChange(snapshot: DataSnapshot) {
+                messageList.clear()
+
+                for(msg in snapshot.children){
+                    val message = msg.getValue(SosMessage::class.java)
+
+                    val today = LocalDateTime.now()
+                    val today_date = today.format(DateTimeFormatter.ISO_DATE)
+
+                    val timeStamp = SimpleDateFormat("yyyy-MM-dd").format(SimpleDateFormat("yyyy-MM-dd hh:mm:ss").parse(message!!.timeStamp))
+
+                    if(timeStamp.equals(today_date) && !message!!.isRead){
+                        messageList.add(message!!)
+                    }
+                }
+
+                adapter.notifyDataSetChanged()
+                binding.recentMessageNum.text = messageList.size.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
+
+        adapter = TodaySosAdapter(this, messageList)
+        binding.mainRecyclerView.adapter = adapter
 
         //날씨
         val weatherRequest= object : StringRequest(

@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getFCMToken()
+        //getFCMToken()
 
         val auto_loginPkey = MyApplication.prefs.getString("admin_pkey", "")
 
@@ -113,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
             token = task.result
 
             // Log and toast
-            //Log.d(TAG, "FCM Token is ${token}")
+            //Log.d("mobileApp", "FCM Token is ${token}")
         })
 
         return token
