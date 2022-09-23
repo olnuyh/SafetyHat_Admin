@@ -30,7 +30,7 @@
             android:layout_marginTop="130dp"
             android:textColor="#3e4f87"
             android:fontFamily="@font/nanumsquare_round_b"
-            android:text="긴급연락"
+            android:text="오늘의 긴급연락"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="170dp"
+            android:layout_marginTop="165dp"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="11sp"
             android:text="최근 메세지"
@@ -51,20 +51,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageButton
+            android:id="@+id/sosNumber"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="313dp"
+            android:layout_marginTop="118dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sos_number"
+            android:text="근무자 관리"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/recentMessageNum"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="170dp"
+            android:layout_marginStart="330dp"
+            android:layout_marginTop="137dp"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="11sp"
             android:text="숫자"
-            android:textColor="#6f6f6f"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:textSize="13sp"
             android:textStyle="normal"
-            app:layout_constraintStart_toEndOf="@+id/recentMessageTxt"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
