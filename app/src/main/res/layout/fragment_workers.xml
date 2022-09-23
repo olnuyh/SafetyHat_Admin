@@ -41,6 +41,16 @@
             android:background="@drawable/stroke_round"
             android:hint="구역"
             android:id="@+id/areaFilterSpinner"/>
+
+        <ImageButton
+            android:id="@+id/downBtn"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="-50dp"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="center"
+            android:src="@drawable/notification_down" />
     </LinearLayout>
 
 

@@ -123,7 +123,6 @@ class AreaCheckFragment : Fragment() {
         binding.registerAreaBtn.setOnClickListener {
             val binding = DialogRegisterAreaBinding.inflate(layoutInflater)
             AlertDialog.Builder(areaActivity).run {
-                setTitle("추가할 구역 입력")
                 setView(binding.root)
                 setPositiveButton("확인", DialogInterface.OnClickListener { dialog, id ->
                     val registerAreaRequest = object : StringRequest(

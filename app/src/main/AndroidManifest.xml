@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Admin"
         android:usesCleartextTraffic="true">
-
+        <activity
+            android:name=".CctvAreaActivity"
+            android:exported="false" />
         <activity
             android:name=".WriteNotificationActivity"
             android:exported="false" />
@@ -42,7 +44,7 @@
         <activity android:name=".SosActivity" />
         <activity
             android:name=".CctvActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity android:name=".ReadCalendarActivity" />
 
         <service

@@ -104,7 +104,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/area_a_btn"
+            android:id="@+id/areaAbtn"
             android:layout_width="120dp"
             android:layout_height="60dp"
             android:layout_marginStart="75dp"
@@ -251,8 +251,8 @@
             android:textSize="17sp"
             android:fontFamily="@font/nanumsquare_round_b"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/area_a_btn"
-            app:layout_constraintStart_toStartOf="@+id/area_a_btn"
+            app:layout_constraintEnd_toEndOf="@+id/areaAbtn"
+            app:layout_constraintStart_toStartOf="@+id/areaAbtn"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="A구역" />
 
