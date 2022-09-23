@@ -74,8 +74,11 @@ class CctvActivity : AppCompatActivity() {
         connect.execute(CONNECT_MSG)
 
         binding.cctvBtn.setOnClickListener(View.OnClickListener {
-            val dataOutput = DataOutputStream(s!!.getOutputStream())
-            dataOutput.writeUTF("connect")
+            Thread{
+                val dataOutput = DataOutputStream(s!!.getOutputStream())
+                dataOutput.writeUTF("connect")
+            }.start()
+
         })
 
         val openfile = File("$filesDir/img0.png")
@@ -90,6 +93,7 @@ class CctvActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg p0: String?): Void? {
             try {
+
                 s= Socket(SERVER_IP, 6667)
 
                 //s= Socket(SERVER_IP, 6667)
@@ -135,7 +139,7 @@ class CctvActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val SERVER_IP = "172.20.10.5"
+        private const val SERVER_IP = "172.20.7.68"
         private const val CONNECT_MSG = "connect"
         private const val STOP_MSG = "stop"
         private const val BUF_SIZE = 100
