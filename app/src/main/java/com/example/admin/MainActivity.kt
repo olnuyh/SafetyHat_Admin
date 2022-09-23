@@ -1,38 +1,35 @@
 package com.example.admin
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Base64
+import android.view.Gravity
 import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
 import com.example.admin.databinding.ActivityMainBinding
 import org.json.JSONArray
 import org.json.JSONObject
-import java.text.SimpleDateFormat
 import java.util.*
-import com.bumptech.glide.Glide
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -50,9 +47,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolBar)
 
+
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.drawer_open, R.string.drawer_close)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
         toggle.syncState()
+
 
         binding.mainDrawerView.setNavigationItemSelectedListener {
             when(it.itemId){
@@ -80,14 +80,15 @@ class MainActivity : AppCompatActivity() {
                     val intent = Intent(this, SalaryActivity::class.java)
                     startActivity(intent)
                 }
-                R.id.logout -> {
-                    MyApplication.prefs.clear()
-                    val intent = Intent(this, LoginActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
             }
             true
+        }
+
+        binding.logout.setOnClickListener {
+            MyApplication.prefs.clear()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
         }
 
         val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
@@ -286,6 +287,8 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ReadNotificationActivity::class.java)
             startActivity(intent)
         }
+
+
     }
 
 
@@ -294,6 +297,15 @@ class MainActivity : AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
+    }
+
 
 
 //     getFCMToken()

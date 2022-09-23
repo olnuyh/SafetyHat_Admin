@@ -15,6 +15,7 @@
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:layout_weight="1"
+        android:fontFamily="@font/a12"
         android:hint ="사원번호"
         android:gravity="center"/>
 
@@ -23,6 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:layout_weight="1"
+        android:fontFamily="@font/a12"
         android:hint ="이름"
         android:gravity="center"/>
 
@@ -31,6 +33,7 @@
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:layout_weight="1"
+        android:fontFamily="@font/a12"
         android:hint ="출결"
         android:gravity="center"/>
 </LinearLayout>

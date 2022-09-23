@@ -29,6 +29,7 @@
             android:layout_marginStart="45dp"
             android:layout_marginTop="130dp"
             android:textColor="#3e4f87"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:text="긴급연락"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,6 +47,7 @@
             android:textColor="#6f6f6f"
             android:textSize="13sp"
             android:textStyle="normal"
+            android:fontFamily="@font/nanumsquare_round"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -74,6 +76,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recentMessageTxt" />
 
+
         <TextView
             android:id="@+id/cctvTitle"
             android:layout_width="wrap_content"
@@ -82,6 +85,7 @@
             android:layout_marginTop="330dp"
             android:textColor="#3e4f87"
             android:text="실시간 현장상황"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -94,7 +98,6 @@
             android:layout_marginTop="375dp"
             android:background="@android:color/transparent"
             android:src="@drawable/area_btn"
-            android:text="MIC"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -106,7 +109,6 @@
             android:layout_marginEnd="75dp"
             android:background="@android:color/transparent"
             android:src="@drawable/area_btn"
-            android:text="MIC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -118,7 +120,6 @@
             android:layout_marginTop="390dp"
             android:background="@android:color/transparent"
             android:src="@drawable/left_arrowbtn"
-            android:text="MIC"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -130,7 +131,6 @@
             android:layout_marginEnd="42dp"
             android:background="@android:color/transparent"
             android:src="@drawable/right_arrowbtn"
-            android:text="MIC"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -143,6 +143,7 @@
             android:textColor="#3e4f87"
             android:text="오늘의 날씨"
             android:textSize="14sp"
+            android:fontFamily="@font/nanumsquare_round_b"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -151,7 +152,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="550dp"
-            android:layout_marginEnd="80dp"
+            android:layout_marginEnd="100dp"
             android:text="서울"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -173,16 +174,16 @@
             android:id="@+id/weathericon"
             android:layout_width="105dp"
             android:layout_height="130dp"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="476dp"
             app:layout_constraintStart_toEndOf="@+id/tempView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/mainWorker"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
-            android:layout_marginStart="30dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="620dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_worker"
@@ -192,9 +193,9 @@
 
         <ImageButton
             android:id="@+id/mainSalary"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
-            android:layout_marginStart="8dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="620dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_salary"
@@ -204,26 +205,26 @@
 
         <ImageButton
             android:id="@+id/mainCalendar"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="620dp"
-            android:layout_marginEnd="8dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_calendar"
             android:text="작업 일정표"
-            app:layout_constraintEnd_toStartOf="@+id/mainNotification"
+            app:layout_constraintStart_toEndOf="@+id/mainSalary"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/mainNotification"
-            android:layout_width="82dp"
-            android:layout_height="85dp"
+            android:layout_width="85dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="15dp"
             android:layout_marginTop="620dp"
-            android:layout_marginEnd="30dp"
             android:background="@android:color/transparent"
             android:src="@drawable/main_notification"
             android:text="공지사항"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/mainCalendar"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -235,6 +236,7 @@
             android:lineSpacingExtra="7sp"
             android:textColor="#ffffff"
             android:textSize="17sp"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/area_a_btn"
             app:layout_constraintStart_toStartOf="@+id/area_a_btn"
@@ -251,6 +253,7 @@
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:textStyle="bold"
+            android:fontFamily="@font/nanumsquare_round_b"
             app:layout_constraintEnd_toEndOf="@+id/area_b_btn"
             app:layout_constraintStart_toStartOf="@+id/area_b_btn"
             app:layout_constraintTop_toTopOf="parent"
@@ -265,6 +268,35 @@
         android:id="@+id/main_drawer_view"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
-        app:menu="@menu/navigation_menu"/>
+        app:menu="@menu/navigation_menu"
+        app:itemIconTint="#7e84a3"
+        app:itemTextColor="#99000000"
+        app:itemTextAppearance="@font/robotomedium">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:paddingTop="12dp"
+            android:paddingBottom="16dp"
+            android:background="@color/main">
+            <Button
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00ff0000"
+                android:drawableLeft="@drawable/logout_icon"
+                android:text="로그아웃"
+                android:fontFamily="@font/a12"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="#ffffff"
+                android:lineSpacingExtra="5sp"/>
+        </LinearLayout>
+
+    </com.google.android.material.navigation.NavigationView>
+
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
