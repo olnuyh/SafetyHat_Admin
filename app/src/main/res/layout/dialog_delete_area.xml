@@ -4,7 +4,6 @@
     android:layout_height="215dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="center"
-    android:elevation="20dp"
     android:background="@drawable/login_corner">
 
     <ImageButton
