@@ -41,6 +41,7 @@ class WriteCalendarActivity : AppCompatActivity() {
             ).show()
         }
 
+
         binding.calendarEndBtn.setOnClickListener {
             val cal = Calendar.getInstance()    //캘린더뷰 만들기
             val dateSetListener =
@@ -99,6 +100,7 @@ class WriteCalendarActivity : AppCompatActivity() {
                 queue.add(writecalendarRequest)
             }
         }
+
     }
 }
 

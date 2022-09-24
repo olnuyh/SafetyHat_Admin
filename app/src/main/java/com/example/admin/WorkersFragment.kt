@@ -54,7 +54,7 @@ class WorkersFragment : Fragment(){
                     val name = obj.getString("area_name")
                     MyApplication.areaList.add(name)
                 }
-                MyApplication.areaList.add("+ 추가")
+                MyApplication.areaList.add("+ 구역 추가")
                 MyApplication.areaList.add("구역을 선택하세요.")
                 binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
             },
@@ -202,7 +202,8 @@ class WorkersFragment : Fragment(){
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                if(MyApplication.areaList[p2].equals("+ 추가")){
+
+                if(MyApplication.areaList[p2].equals("+ 구역 추가")){
                     val queue = Volley.newRequestQueue(areaActivity)
 
                     val binding2 = DialogRegisterAreaBinding.inflate(layoutInflater)

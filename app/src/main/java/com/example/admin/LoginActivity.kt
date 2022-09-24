@@ -113,7 +113,7 @@ class LoginActivity : AppCompatActivity() {
             token = task.result
 
             // Log and toast
-            //Log.d("mobileApp", "FCM Token is ${token}")
+            Log.d("mobileApp", "FCM Token is ${token}")
         })
 
         return token

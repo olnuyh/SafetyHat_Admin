@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.menuCctv -> {
-                    val intent = Intent(this, CctvActivity::class.java)
+                    val intent = Intent(this, CctvAreaActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.menuArea -> {
@@ -285,6 +285,11 @@ class MainActivity : AppCompatActivity() {
 
         binding.mainNotification.setOnClickListener {
             val intent = Intent(this, ReadNotificationActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.areaAbtn.setOnClickListener{
+            val intent = Intent(this, CctvAreaActivity::class.java)
             startActivity(intent)
         }
 

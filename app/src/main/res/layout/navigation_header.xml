@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="30dp"
-        app:srcCompat="@drawable/profile_default"/>
+        app:srcCompat="@drawable/profile_default" />
 
     <TextView
         android:id="@+id/navigationName"
@@ -20,13 +20,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="134dp"
+        android:fontFamily="@font/a14"
         android:hint="이름"
-        android:textColor="#ffffff"
-        android:textStyle="normal"
-        android:textSize="20sp"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="4sp"
-        android:fontFamily="@font/a14"/>
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="normal" />
 
 
 

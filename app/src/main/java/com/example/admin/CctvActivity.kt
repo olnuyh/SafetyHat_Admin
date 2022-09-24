@@ -39,7 +39,7 @@ class CctvActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.menuCctv -> {
-                    val intent = Intent(this, CctvActivity::class.java)
+                    val intent = Intent(this, CctvAreaActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.menuArea -> {
@@ -73,10 +73,11 @@ class CctvActivity : AppCompatActivity() {
         connect.execute(CONNECT_MSG)
 
         binding.cctvBtn.setOnClickListener(View.OnClickListener {
-            Thread {
+            Thread{
                 val dataOutput = DataOutputStream(s!!.getOutputStream())
                 dataOutput.writeUTF("connect")
             }.start()
+
         })
 
         //val openfile = File("$filesDir/img0.png")
@@ -91,6 +92,7 @@ class CctvActivity : AppCompatActivity() {
 
         override fun doInBackground(vararg p0: String?): Void? {
             try {
+
                 s= Socket(SERVER_IP, 6667)
 
                 //s= Socket(SERVER_IP, 6667)

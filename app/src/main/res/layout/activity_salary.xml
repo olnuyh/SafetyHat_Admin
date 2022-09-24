@@ -105,7 +105,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/search_stroke"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         </androidx.recyclerview.widget.RecyclerView>
