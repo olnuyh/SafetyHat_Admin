@@ -3,10 +3,16 @@ package com.example.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.admin.databinding.ActivityCctvAreaBinding
-import com.example.admin.databinding.ActivityCctvBinding
-import com.example.admin.databinding.ActivityLoginBinding
-import com.example.admin.databinding.ActivityMainBinding
+import android.os.Handler
+import com.example.admin.MainActivity
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.admin.databinding.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 
 class CctvAreaActivity : AppCompatActivity() {
 
@@ -19,8 +25,5 @@ class CctvAreaActivity : AppCompatActivity() {
             val intent = Intent(this, CctvActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
 }

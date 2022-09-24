@@ -28,7 +28,7 @@
         android:lineSpacingExtra="9sp"
         android:text="해당 게시물을"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="62dp"
+        android:layout_marginTop="55dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/a12"/>
@@ -43,7 +43,7 @@
         android:lineSpacingExtra="9sp"
         android:text="삭제하시겠습니까?"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="98dp"
+        android:layout_marginTop="88dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/a12"/>

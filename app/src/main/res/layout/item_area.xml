@@ -16,7 +16,7 @@
         android:layout_height="33dp"
         android:layout_weight="1"
         android:fontFamily="@font/a12"
-        android:hint ="사원번호"
+        android:hint ="-"
         android:gravity="center"/>
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_height="33dp"
         android:layout_weight="1"
         android:fontFamily="@font/a12"
-        android:hint ="이름"
+        android:hint ="-"
         android:gravity="center"/>
 
     <TextView
@@ -34,7 +34,16 @@
         android:layout_height="33dp"
         android:layout_weight="1"
         android:fontFamily="@font/a12"
-        android:hint ="출결"
+        android:hint ="-"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/area_itemArea"
+        android:layout_width="0dp"
+        android:layout_height="33dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/a12"
+        android:hint ="-"
         android:gravity="center"/>
 </LinearLayout>
 

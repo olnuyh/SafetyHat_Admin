@@ -289,7 +289,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.areaAbtn.setOnClickListener{
-            val intent = Intent(this, CctvActivity::class.java)
+            val intent = Intent(this, CctvAreaActivity::class.java)
             startActivity(intent)
         }
 

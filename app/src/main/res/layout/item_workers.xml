@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:layout_width="360dp"
+    android:layout_width="335dp"
     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/itemEmplId"
@@ -9,7 +9,7 @@
         android:layout_height="33dp"
         android:layout_weight="1"
         android:fontFamily="@font/a12"
-        android:hint ="사원번호"
+        android:hint ="-"
         android:gravity="center"/>
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_height="33dp"
         android:layout_weight="1"
         android:fontFamily="@font/a12"
-        android:hint ="이름"
+        android:hint ="-"
         android:gravity="center"/>
 
     <TextView
@@ -27,7 +27,7 @@
         android:layout_height="33dp"
         android:layout_weight="1"
         android:fontFamily="@font/a12"
-        android:hint ="출결"
+        android:hint ="-"
         android:gravity="center"/>
 
     <TextView
@@ -36,6 +36,6 @@
         android:layout_height="33dp"
         android:layout_weight="1"
         android:fontFamily="@font/a12"
-        android:hint ="구역"
+        android:hint ="-"
         android:gravity="center"/>
 </LinearLayout>

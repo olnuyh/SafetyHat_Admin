@@ -56,17 +56,17 @@
         android:id="@+id/a_area_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="211dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/a14"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="4sp"
         android:text="A구역"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/aArea"
+        app:layout_constraintStart_toStartOf="@+id/aArea"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <ImageButton
         android:id="@+id/b_area"
@@ -83,16 +83,16 @@
         android:id="@+id/b_area_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="311dp"
+        android:layout_marginTop="27dp"
         android:fontFamily="@font/a14"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="4sp"
         android:text="B구역"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="18sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/b_area"
+        app:layout_constraintStart_toStartOf="@+id/b_area"
+        app:layout_constraintTop_toTopOf="@+id/b_area" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

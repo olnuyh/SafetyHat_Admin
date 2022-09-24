@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:orientation="horizontal">
         <EditText
             android:layout_width="300dp"
@@ -17,6 +17,8 @@
             android:layout_marginStart="37dp"
             android:background="@drawable/stroke_round"
             android:hint="사원번호 / 이름"
+            android:fontFamily="@font/a12"
+            android:textSize="12sp"
             android:id="@+id/searchText"/>
 
         <ImageButton
@@ -33,6 +35,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/a12"
+        android:textSize="12sp"
         android:orientation="horizontal">
         <Spinner
             android:layout_width="335dp"
@@ -95,7 +99,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="37dp"
+        android:layout_marginStart="32dp"
         android:layout_marginEnd="46dp"
         android:id="@+id/areaWorkersRecyclerView"/>
 

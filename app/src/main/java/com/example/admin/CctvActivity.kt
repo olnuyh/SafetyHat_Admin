@@ -1,7 +1,6 @@
 package com.example.admin
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -40,7 +39,7 @@ class CctvActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 R.id.menuCctv -> {
-                    val intent = Intent(this, CctvActivity::class.java)
+                    val intent = Intent(this, CctvAreaActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.menuArea -> {
@@ -81,10 +80,10 @@ class CctvActivity : AppCompatActivity() {
 
         })
 
-        val openfile = File("$filesDir/img0.png")
-        val op = BitmapFactory.Options()
-        val Bm = BitmapFactory.decodeFile(openfile.absolutePath, op)
-        binding.getImage.setImageBitmap(Bm)
+        //val openfile = File("$filesDir/img0.png")
+        //val op = BitmapFactory.Options()
+        //val Bm = BitmapFactory.decodeFile(openfile.absolutePath, op)
+        //binding.getImage.setImageBitmap(Bm)
 
 
     }
@@ -139,7 +138,7 @@ class CctvActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val SERVER_IP = "172.20.7.68"
+        private const val SERVER_IP = "169.254.64.98"
         private const val CONNECT_MSG = "connect"
         private const val STOP_MSG = "stop"
         private const val BUF_SIZE = 100

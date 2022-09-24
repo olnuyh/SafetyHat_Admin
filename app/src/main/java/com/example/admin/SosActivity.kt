@@ -42,7 +42,7 @@ class SosActivity : AppCompatActivity(){
                     startActivity(intent)
                 }
                 R.id.menuCctv -> {
-                    val intent = Intent(this, CctvActivity::class.java)
+                    val intent = Intent(this, CctvAreaActivity::class.java)
                     startActivity(intent)
                 }
                 R.id.menuArea -> {
