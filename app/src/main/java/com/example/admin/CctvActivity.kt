@@ -1,7 +1,6 @@
 package com.example.admin
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
@@ -74,14 +73,16 @@ class CctvActivity : AppCompatActivity() {
         connect.execute(CONNECT_MSG)
 
         binding.cctvBtn.setOnClickListener(View.OnClickListener {
-            val dataOutput = DataOutputStream(s!!.getOutputStream())
-            dataOutput.writeUTF("connect")
+            Thread {
+                val dataOutput = DataOutputStream(s!!.getOutputStream())
+                dataOutput.writeUTF("connect")
+            }.start()
         })
 
-        val openfile = File("$filesDir/img0.png")
-        val op = BitmapFactory.Options()
-        val Bm = BitmapFactory.decodeFile(openfile.absolutePath, op)
-        binding.getImage.setImageBitmap(Bm)
+        //val openfile = File("$filesDir/img0.png")
+        //val op = BitmapFactory.Options()
+        //val Bm = BitmapFactory.decodeFile(openfile.absolutePath, op)
+        //binding.getImage.setImageBitmap(Bm)
 
 
     }
@@ -135,7 +136,7 @@ class CctvActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val SERVER_IP = "172.20.10.5"
+        private const val SERVER_IP = "169.254.64.98"
         private const val CONNECT_MSG = "connect"
         private const val STOP_MSG = "stop"
         private const val BUF_SIZE = 100
