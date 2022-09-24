@@ -246,33 +246,33 @@
             android:id="@+id/area_a"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="423dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="7sp"
             android:textColor="#ffffff"
             android:textSize="17sp"
-            android:fontFamily="@font/nanumsquare_round_b"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/areaAbtn"
             app:layout_constraintStart_toStartOf="@+id/areaAbtn"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="A구역" />
+            app:layout_constraintTop_toTopOf="@+id/areaAbtn"
+            android:text="A구역" />
 
         <TextView
             android:id="@+id/area_b"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="423dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="@font/nanumsquare_round_b"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="7sp"
             android:textColor="#ffffff"
             android:textSize="17sp"
             android:textStyle="bold"
-            android:fontFamily="@font/nanumsquare_round_b"
             app:layout_constraintEnd_toEndOf="@+id/area_b_btn"
             app:layout_constraintStart_toStartOf="@+id/area_b_btn"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="B구역" />
+            app:layout_constraintTop_toTopOf="@+id/area_b_btn"
+            android:text="B구역" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

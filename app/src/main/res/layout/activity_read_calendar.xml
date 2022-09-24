@@ -90,16 +90,29 @@
 
 
         <ImageButton
-            android:id="@+id/calendar_register_btn"
+            android:id="@+id/calendarRegisterBtn"
             android:layout_width="117dp"
             android:layout_height="40dp"
             android:layout_marginTop="630dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/notification_register_btn"
             android:text="일정 등록"
             app:layout_constraintEnd_toEndOf="parent"
-            android:background="@android:color/transparent"
-            android:src="@drawable/calender_btn"
             app:layout_constraintStart_toStartOf="@+id/scheduleView"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/calendar_register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/a13"
+            android:text="일정등록"
+            android:textColor="#3E4F87"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/calendarRegisterBtn"
+            app:layout_constraintTop_toTopOf="@+id/calendarRegisterBtn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

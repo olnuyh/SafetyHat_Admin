@@ -74,6 +74,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="88dp"/>
 
+        <TextView
+            android:id="@+id/calendar_register_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/a13"
+            android:text="공지등록"
+            android:textColor="#3E4F87"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/goToRegisterNotificationBtn"
+            app:layout_constraintTop_toTopOf="@+id/goToRegisterNotificationBtn" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView

@@ -14,6 +14,16 @@
         android:layout_marginTop="30dp"
         app:srcCompat="@drawable/profile_default" />
 
+    <ImageButton
+        android:id="@+id/navigationCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="244.7dp"
+        android:layout_marginTop="8.7dp"
+        android:background="@null"
+        app:srcCompat="@drawable/header_x_btn"
+        app:tint="#ffffff" />
+
     <TextView
         android:id="@+id/navigationName"
         android:layout_width="wrap_content"

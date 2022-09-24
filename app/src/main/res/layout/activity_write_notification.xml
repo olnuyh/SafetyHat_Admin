@@ -64,7 +64,7 @@
     <EditText
         android:id="@+id/writeNotificationContents"
         android:layout_width="300dp"
-        android:layout_height="249dp"
+        android:layout_height="300dp"
         android:layout_marginTop="22dp"
         android:hint="내용"
         android:gravity="top"
@@ -87,8 +87,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:background="#ffffff"
-        app:srcCompat="@drawable/notification_ok_btn"
+        app:srcCompat="@drawable/ok_mint_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="95dp"/>
+
+    <TextView
+        android:id="@+id/okBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="확인"
+        android:fontFamily="@font/a13"
+        android:textColor="#de000000"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/registerNotificationBtn"
+        app:layout_constraintStart_toStartOf="@+id/registerNotificationBtn"
+        app:layout_constraintTop_toTopOf="@+id/registerNotificationBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -191,11 +191,22 @@
         android:id="@+id/registerWorkBtn"
         android:layout_width="138dp"
         android:layout_height="40dp"
-        android:background="@android:color/transparent"
         android:layout_gravity="center"
-        android:text="등록"
-        android:src="@drawable/enter_btn"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ok_btn"
+        android:text="등록" />
 
+    <TextView
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-30dp"
+        android:text="확인"
+        android:fontFamily="@font/a14"
+        android:textColor="#de000000"
+        android:textSize="17sp"
+        android:textStyle="normal"
+        android:layout_gravity="center"/>
 </LinearLayout>
 

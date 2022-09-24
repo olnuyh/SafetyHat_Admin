@@ -53,12 +53,26 @@
         android:id="@+id/okButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/delete_ok_btn"
+        app:srcCompat="@drawable/ok_btn"
         android:background="#ffffff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="38dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="확인"
+        android:fontFamily="@font/a13"
+        android:textColor="#de000000"
+        android:textSize="17sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="@+id/okButton"
+        app:layout_constraintStart_toStartOf="@+id/okButton"
+        app:layout_constraintTop_toTopOf="@+id/okButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

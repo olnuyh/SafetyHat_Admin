@@ -35,30 +35,46 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="normal"
-        android:textSize="17sp"
-        android:textColor="#de000000"
+        android:layout_marginTop="98dp"
+        android:fontFamily="@font/a12"
         android:letterSpacing="0.01"
         android:lineSpacingExtra="9sp"
         android:text="등록하시겠습니까?"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="98dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="#de000000"
+        android:textSize="17sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="@font/a12"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/okButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/delete_ok_btn"
+        app:srcCompat="@drawable/ok_btn"
         android:background="#ffffff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="38dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/closeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="등록"
+        android:fontFamily="@font/a13"
+        android:textColor="#de000000"
+        android:textSize="17sp"
+        android:textStyle="normal"
+
+        app:layout_constraintEnd_toEndOf="@+id/okButton"
+        app:layout_constraintStart_toStartOf="@+id/okButton"
+        app:layout_constraintTop_toTopOf="@+id/okButton" />
 
     <EditText
         android:id="@+id/dialogEditArea"
@@ -70,6 +86,7 @@
         android:textColor="#de000000"
         android:textSize="17sp"
         android:textStyle="normal"
+        android:fontFamily="@font/a13"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
