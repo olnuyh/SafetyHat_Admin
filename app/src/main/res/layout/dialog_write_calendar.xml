@@ -6,6 +6,7 @@
     android:layout_width="327dp"
     android:layout_height="420dp"
     android:layout_gravity="center"
+    android:elevation="20dp"
     android:background="@drawable/login_corner"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintStart_toStartOf="parent"
