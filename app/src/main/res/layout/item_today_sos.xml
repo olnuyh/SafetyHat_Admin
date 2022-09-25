@@ -17,7 +17,7 @@
         android:id="@+id/mainSosMessageName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:text="이름"
         app:layout_constraintStart_toEndOf="@+id/mainSosMessageTime"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,7 +26,7 @@
         android:id="@+id/mainSosMessageContents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:text="내용"
         app:layout_constraintStart_toEndOf="@+id/mainSosMessageName"
         app:layout_constraintTop_toTopOf="parent" />

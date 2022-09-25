@@ -2,6 +2,7 @@ package com.example.admin
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -102,14 +103,16 @@ class SosActivity : AppCompatActivity(){
                     messageList.add(message_before!!)
                 }
 
-                if(!messageList.get(messageList.size - 1).isRead){
-                    ref.updateChildren(readCheckMap).addOnCompleteListener {
+                if(messageList.size != 0){
+                    if(!messageList.get(messageList.size - 1).isRead){
+                        ref.updateChildren(readCheckMap).addOnCompleteListener {
+                            adapter.notifyDataSetChanged()
+                            binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
+                        }
+                    }else{
                         adapter.notifyDataSetChanged()
                         binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
                     }
-                }else{
-                    adapter.notifyDataSetChanged()
-                    binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
                 }
             }
 
