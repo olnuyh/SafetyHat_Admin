@@ -2,6 +2,8 @@ package com.example.admin
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
@@ -53,6 +55,7 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
             dialog.setContentView(R.layout.dialog_notification_delete)
             dialog.setCanceledOnTouchOutside(true)
             dialog.setCancelable(true)
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             val okBtn = dialog.findViewById<ImageButton>(R.id.okButton)
             val cancelBtn = dialog.findViewById<ImageButton>(R.id.cancelButton)

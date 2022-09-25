@@ -1,13 +1,16 @@
 package com.example.admin
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import com.android.volley.Request
@@ -16,6 +19,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.admin.databinding.ActivityReadCalendarBinding
 import com.example.admin.databinding.ActivityWriteCalendarBinding
+import com.example.admin.databinding.DialogWriteCalendarBinding
 import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,7 +41,7 @@ class ReadCalendarActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         toggle.syncState()
 
-        binding.mainDrawerView.setNavigationItemSelectedListener {
+        binding.calendarDrawerView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menuSos -> {
                     val intent = Intent(this, SosActivity::class.java)
@@ -74,11 +78,19 @@ class ReadCalendarActivity : AppCompatActivity() {
             finish()
         }
 
+        val headerView = binding.calendarDrawerView.getHeaderView(0)
+        headerView.findViewById<ImageButton>(R.id.navigationCancel).setOnClickListener {
+            binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        }
+
+        headerView.findViewById<TextView>(R.id.navigationName).text=MyApplication.prefs.getString("admin_name", "") + " 관리자"
+
         binding.calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
             val date = year.toString()+"-"+(month + 1).toString()+"-"+dayOfMonth.toString()
 
             // Volley를 이용한 http 통신
-            val calendaruploadRequest = object : StringRequest(
+            val calendaruploadRequest = @RequiresApi(Build.VERSION_CODES.M)
+            object : StringRequest(
                 Request.Method.POST,
                 BuildConfig.API_KEY + "read_calendar.php",
                 Response.Listener<String>{ response ->
@@ -87,7 +99,7 @@ class ReadCalendarActivity : AppCompatActivity() {
                     val array = jsonObject.getJSONArray("response")
 
                     if(array.length() == 0){
-                        binding.scheduleLayout.visibility = View.GONE
+                        binding.scheduleLayout.visibility = View.INVISIBLE
                     }
                     else{
                         binding.scheduleLayout.removeAllViews()
@@ -98,13 +110,14 @@ class ReadCalendarActivity : AppCompatActivity() {
                             layoutParams.setMargins(130, 40, 0, 0)
                             textView.layoutParams = layoutParams
                             textView.text = array.getJSONObject(i).getString("calendar_contents")
+                            textView.setTextAppearance(R.style.calendar_text)
                             binding.scheduleLayout.addView(textView)
 
 
                             val drawable = resources.getDrawable(R.drawable.calendar_point)
                             val imageView= ImageView(this)
                             val layoutParams2 = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-                            layoutParams2.setMargins(50, -45, 0, 0)
+                            layoutParams2.setMargins(50, -40, 0, 0)
                             imageView.layoutParams = layoutParams2
                             imageView.setImageDrawable(drawable)
                             binding.scheduleLayout.addView(imageView)
@@ -127,30 +140,27 @@ class ReadCalendarActivity : AppCompatActivity() {
             queue.add(calendaruploadRequest)
         }
 
-
-        val dialog = Dialog(this)
-        dialog.setContentView(R.layout.dialog_write_calendar)
-        dialog.setCanceledOnTouchOutside(true)
-        dialog.setCancelable(true)
-
-        val calendarStartBtn = dialog.findViewById<ImageButton>(R.id.calendarStartBtn)
-        val calendarStart = dialog.findViewById<TextView>(R.id.calendarStart)
-        val calendarEndBtn = dialog.findViewById<ImageButton>(R.id.calendarEndBtn)
-        val calendarEnd = dialog.findViewById<TextView>(R.id.calendarEnd)
-        val calendarContents = dialog.findViewById<EditText>(R.id.calendarContents)
-        val calendarRegisterBtn = dialog.findViewById<ImageButton>(R.id.calendarRegisterBtn)
-
-
         binding.calendarRegisterBtn.setOnClickListener {
-//            finish()
-//            startActivity(Intent(this,WriteCalendarActivity::class.java))
-            dialog.show()
+            val dialogBinding = DialogWriteCalendarBinding.inflate(layoutInflater)
 
-            calendarStartBtn.setOnClickListener {
+            val dialog = AlertDialog.Builder(this).run{
+                setView(dialogBinding.root)
+                setCancelable(true)
+                show()
+            }
+
+            dialog.window!!.setLayout(850, WindowManager.LayoutParams.WRAP_CONTENT)
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            dialogBinding.cancelButton.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialogBinding.calendarStartBtn.setOnClickListener {
                 val cal = Calendar.getInstance()    //캘린더뷰 만들기
                 val dateSetListener =
                     DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                        calendarStart.text = year.toString()+"-"+(month + 1).toString()+"-"+dayOfMonth.toString()
+                        dialogBinding.calendarStart.text = year.toString()+"-"+(month + 1).toString()+"-"+dayOfMonth.toString()
                     }
                 DatePickerDialog(
                     this,
@@ -161,11 +171,11 @@ class ReadCalendarActivity : AppCompatActivity() {
                 ).show()
             }
 
-           calendarEndBtn.setOnClickListener {
+            dialogBinding.calendarEndBtn.setOnClickListener {
                 val cal = Calendar.getInstance()    //캘린더뷰 만들기
                 val dateSetListener =
                     DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
-                        calendarEnd.text = year.toString()+"-"+(month + 1).toString()+"-"+dayOfMonth.toString()
+                        dialogBinding.calendarEnd.text = year.toString()+"-"+(month + 1).toString()+"-"+dayOfMonth.toString()
                     }
                 DatePickerDialog(
                     this,
@@ -176,10 +186,10 @@ class ReadCalendarActivity : AppCompatActivity() {
                 ).show()
             }
 
-            calendarRegisterBtn.setOnClickListener {
-                val startdate = calendarStart.text.toString()
-                val enddate = calendarEnd.text.toString()
-                val contents = calendarContents.text.toString()
+            dialogBinding.registerBtn.setOnClickListener {
+                val startdate = dialogBinding.calendarStart.text.toString()
+                val enddate = dialogBinding.calendarEnd.text.toString()
+                val contents = dialogBinding.calendarContents.text.toString()
 
                 val startdate_date = SimpleDateFormat("yyyy-MM-dd").parse(startdate)
                 val enddate_date = SimpleDateFormat("yyyy-MM-dd").parse(enddate)

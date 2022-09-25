@@ -71,13 +71,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/calendarView"></View>
 
+
         <ScrollView
             android:id="@+id/scheduleView"
-            android:layout_width="409dp"
-            android:layout_height="200dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/bottomLine">
 
@@ -85,28 +87,29 @@
                 android:id="@+id/scheduleLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:orientation="vertical" />
         </ScrollView>
-
 
         <ImageButton
             android:id="@+id/calendarRegisterBtn"
             android:layout_width="117dp"
             android:layout_height="40dp"
-            android:layout_marginTop="630dp"
+            android:layout_marginTop="10dp"
             android:background="@android:color/transparent"
             android:src="@drawable/notification_register_btn"
             android:text="일정 등록"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/scheduleView"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scheduleView" />
 
         <TextView
             android:id="@+id/calendar_register_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="11dp"
             android:fontFamily="@font/a13"
             android:text="일정등록"
             android:textColor="#3E4F87"
@@ -119,14 +122,14 @@
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/main_drawer_view"
+        android:id="@+id/calendar_drawer_view"
         android:layout_gravity="start"
         android:layout_marginStart="20dp"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/navigation_menu"
         app:itemIconTint="#7e84a3"
         app:itemTextColor="#99000000"
-        app:itemTextAppearance="@font/a12">
+        app:itemTextAppearance="@style/navigation_item_font">
 
         <LinearLayout
             android:layout_width="match_parent"
