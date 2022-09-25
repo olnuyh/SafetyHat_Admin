@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="21dp"
         android:layout_marginTop="23dp"
-        android:fontFamily="@font/a13"
+        android:fontFamily="@font/a12"
         android:text="이름"
         app:layout_constraintStart_toEndOf="@+id/sosMessageDate"
         app:layout_constraintTop_toTopOf="parent" />
@@ -48,9 +48,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="23dp"
+        android:layout_marginTop="22dp"
         android:fontFamily="@font/a14"
-        android:textStyle="bold"
+        android:textColor="#F58D34"
         android:text="내용"
         app:layout_constraintStart_toEndOf="@+id/sosMessageName"
         app:layout_constraintTop_toTopOf="parent" />
