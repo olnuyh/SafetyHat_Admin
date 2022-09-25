@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -142,8 +143,9 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "이름 가져오기 실패", Toast.LENGTH_LONG).show()
                 }
                 else {
+                    MyApplication.prefs.setString("admin_name", response)
                     val navName : TextView = headerView.findViewById(R.id.navigationName)
-                    navName.text=response.toString()
+                    navName.text=MyApplication.prefs.getString("admin_name", "") + " 관리자"
                 }
 
             },
@@ -159,6 +161,10 @@ class MainActivity : AppCompatActivity() {
         }
         val queue3 = Volley.newRequestQueue(this)
         queue3.add(mainRequest)
+
+        headerView.findViewById<ImageButton>(R.id.navigationCancel).setOnClickListener {
+            binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        }
 
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
 
