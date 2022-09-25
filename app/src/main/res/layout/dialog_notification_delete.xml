@@ -63,13 +63,12 @@
         android:id="@+id/closeBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:text="확인"
-        android:fontFamily="@font/a13"
         android:textColor="#de000000"
-        android:textSize="17sp"
+        android:textSize="15sp"
+        android:fontFamily="@font/a13"
         android:textStyle="normal"
-
+        app:layout_constraintBottom_toBottomOf="@+id/okButton"
         app:layout_constraintEnd_toEndOf="@+id/okButton"
         app:layout_constraintStart_toStartOf="@+id/okButton"
         app:layout_constraintTop_toTopOf="@+id/okButton" />

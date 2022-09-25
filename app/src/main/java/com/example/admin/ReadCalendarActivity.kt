@@ -208,8 +208,10 @@ class ReadCalendarActivity : AppCompatActivity() {
                             if(response.toString().equals("1")) { // 성공
                                 Toast.makeText(this, "일정이 등록되었습니다.", Toast.LENGTH_LONG).show()
                                 finish()
+                                overridePendingTransition(0, 0)
                                 val intent = Intent(this, ReadCalendarActivity::class.java)
                                 startActivity(intent)
+                                overridePendingTransition(0, 0)
                             }
                         },
                         Response.ErrorListener { error ->
