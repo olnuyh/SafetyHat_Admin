@@ -95,6 +95,7 @@ class ReadNotificationActivity : AppCompatActivity() {
         queue.add(readNotificationRequest)
 
         binding.goToRegisterNotificationBtn.setOnClickListener {
+            finish()
             val intent = Intent(this, WriteNotificationActivity::class.java)
             startActivity(intent)
         }

@@ -3,9 +3,11 @@ package com.example.admin
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -40,7 +42,7 @@ class SalaryActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         toggle.syncState()
 
-        binding.mainDrawerView.setNavigationItemSelectedListener {
+        binding.salaryDrawerView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menuSos -> {
                     val intent = Intent(this, SosActivity::class.java)
@@ -69,6 +71,13 @@ class SalaryActivity : AppCompatActivity() {
             }
             true
         }
+
+        val headerView = binding.salaryDrawerView.getHeaderView(0)
+        headerView.findViewById<ImageButton>(R.id.navigationCancel).setOnClickListener {
+            binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        }
+
+        headerView.findViewById<TextView>(R.id.navigationName).text=MyApplication.prefs.getString("admin_name", "") + " 관리자"
 
         binding.logout.setOnClickListener {
             MyApplication.prefs.clear()

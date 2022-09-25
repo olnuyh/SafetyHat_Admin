@@ -2,8 +2,11 @@ package com.example.admin
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -52,7 +55,7 @@ class AreaActivity : AppCompatActivity() {
         supportActionBar?.setDisplayShowTitleEnabled(false)
         toggle.syncState()
 
-        binding.mainDrawerView.setNavigationItemSelectedListener {
+        binding.areaDrawerView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menuSos -> {
                     val intent = Intent(this, SosActivity::class.java)
@@ -81,6 +84,14 @@ class AreaActivity : AppCompatActivity() {
             }
             true
         }
+
+        val headerView = binding.areaDrawerView.getHeaderView(0)
+        headerView.findViewById<ImageButton>(R.id.navigationCancel).setOnClickListener {
+            binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        }
+
+        headerView.findViewById<TextView>(R.id.navigationName).text=MyApplication.prefs.getString("admin_name", "") + " 관리자"
+
 
         binding.logout.setOnClickListener {
             MyApplication.prefs.clear()
