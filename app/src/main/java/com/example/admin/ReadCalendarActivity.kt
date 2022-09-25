@@ -18,7 +18,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.admin.databinding.ActivityReadCalendarBinding
-import com.example.admin.databinding.ActivityWriteCalendarBinding
 import com.example.admin.databinding.DialogWriteCalendarBinding
 import org.json.JSONObject
 import java.text.SimpleDateFormat
