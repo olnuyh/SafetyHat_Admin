@@ -4,12 +4,15 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -21,6 +24,7 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.admin.databinding.DialogDeleteAreaBinding
 import com.example.admin.databinding.DialogRegisterAreaBinding
+import com.example.admin.databinding.DialogWriteCalendarBinding
 import com.example.admin.databinding.FragmentWorkersBinding
 import org.json.JSONArray
 import org.json.JSONObject
@@ -51,11 +55,11 @@ class WorkersFragment : Fragment(){
                 MyApplication.areaList.add("-")
                 for (i in 0 until response.length()) {
                     val obj = response[i] as JSONObject
-                    val name = obj.getString("area_name")
+                    val name = obj.getString("area_name") + "구역"
                     MyApplication.areaList.add(name)
                 }
-                MyApplication.areaList.add("+ 구역 추가")
-                MyApplication.areaList.add("구역을 선택하세요.")
+                MyApplication.areaList.add("+ 추가")
+                MyApplication.areaList.add("구역")
                 binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
             },
             Response.ErrorListener { error ->
@@ -91,6 +95,21 @@ class WorkersFragment : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentWorkersBinding.inflate(inflater, container, false)
+
+        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
+            Request.Method.GET,
+            BuildConfig.API_KEY + "read_workers.php",
+            null,
+            Response.Listener<JSONArray> { response ->
+                MyApplication.workers = response
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+            }
+        )
+
+        val queue = Volley.newRequestQueue(areaActivity)
+        queue.add(readWorkersRequest)
 
         binding.areaWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
         val adapter = WorkersAdapter(areaActivity, MyApplication.workers)
@@ -148,44 +167,51 @@ class WorkersFragment : Fragment(){
                     spnItemDel.setOnClickListener {
                         val queue = Volley.newRequestQueue(areaActivity)
 
-                        val binding3 = DialogDeleteAreaBinding.inflate(layoutInflater)
-                        binding3.dialogDeleteArea.setText(MyApplication.areaList[position] + "구역을")
-                        AlertDialog.Builder(areaActivity).run {
-                            setTitle("삭제할 구역 입력")
-                            setView(binding3.root)
-                            setPositiveButton("확인", DialogInterface.OnClickListener { dialog, id ->
-                                val deleteAreaRequest = object : StringRequest(
-                                    Request.Method.POST,
-                                    BuildConfig.API_KEY + "delete_area.php",
-                                    Response.Listener<String> { response ->
-                                        readArea()
-                                        Toast.makeText(
-                                            areaActivity,
-                                            "구역이 삭제되었습니다.",
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                    },
-                                    Response.ErrorListener { error ->
-                                        Toast.makeText(
-                                            areaActivity,
-                                            error.toString(),
-                                            Toast.LENGTH_LONG
-                                        ).show()
-                                    }) {
-                                    override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
-                                        val params: MutableMap<String, String> = HashMap()
-                                        params["area"] = MyApplication.areaList[position]
-                                        return params
-                                    }
-                                }
+                        val dialogBinding = DialogDeleteAreaBinding.inflate(layoutInflater)
 
-                                queue.add(deleteAreaRequest)
-                            })
-                            setNegativeButton("취소", DialogInterface.OnClickListener { dialog, id ->
-                                binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
-                            })
-                            setCancelable(false)
+                        val dialog = AlertDialog.Builder(areaActivity).run{
+                            setView(dialogBinding.root)
+                            setCancelable(true)
                             show()
+                        }
+
+                        dialog.window!!.setLayout(850, WindowManager.LayoutParams.WRAP_CONTENT)
+                        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                        dialogBinding.cancelButton.setOnClickListener {
+                            dialog.dismiss()
+                        }
+
+                        dialogBinding.dialogDeleteArea.text = MyApplication.areaList[position] + "을"
+
+                        dialogBinding.okButton.setOnClickListener {
+                            val deleteAreaRequest = object : StringRequest(
+                                Request.Method.POST,
+                                BuildConfig.API_KEY + "delete_area.php",
+                                Response.Listener<String> { response ->
+                                    readArea()
+                                    Toast.makeText(
+                                        areaActivity,
+                                        "구역이 삭제되었습니다.",
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                    dialog.dismiss()
+                                },
+                                Response.ErrorListener { error ->
+                                    Toast.makeText(
+                                        areaActivity,
+                                        error.toString(),
+                                        Toast.LENGTH_LONG
+                                    ).show()
+                                }) {
+                                override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
+                                    val params: MutableMap<String, String> = HashMap()
+                                    params["area"] = MyApplication.areaList[position][0].toString()
+                                    return params
+                                }
+                            }
+
+                            queue.add(deleteAreaRequest)
                         }
                     }
                 }
@@ -202,49 +228,54 @@ class WorkersFragment : Fragment(){
             }
 
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-
-                if(MyApplication.areaList[p2].equals("+ 구역 추가")){
+                if(MyApplication.areaList[p2].equals("+ 추가")){
                     val queue = Volley.newRequestQueue(areaActivity)
 
-                    val binding2 = DialogRegisterAreaBinding.inflate(layoutInflater)
-                    AlertDialog.Builder(areaActivity).run {
-                        setTitle("추가할 구역 입력")
-                        setView(binding2.root)
-                        setPositiveButton("확인", DialogInterface.OnClickListener { dialog, id ->
-                            if(binding2.dialogEditArea.text.trim().toString() == ""){
-                                Toast.makeText(areaActivity, "추가하려는 구역을 입력해주세요.", Toast.LENGTH_LONG).show()
-                            }
-                            else{
-                                val registerAreaRequest = object : StringRequest(
-                                    Request.Method.POST,
-                                    BuildConfig.API_KEY+"register_area.php",
-                                    Response.Listener<String>{ response ->
-                                        if(response.toString().equals("-1")){ // 추가하려는 구역이 이미 존재하는 경우
-                                            Toast.makeText(areaActivity, "이미 존재하는 구역입니다.", Toast.LENGTH_LONG).show()
-                                        }
-                                        else if(response.equals("1")){ // 정상 추가 성공
-                                            readArea()
-                                            Toast.makeText(areaActivity, "구역이 추가되었습니다.", Toast.LENGTH_LONG).show()
-                                        }
-                                    },
-                                    Response.ErrorListener { error ->
-                                        Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-                                    }){
-                                    override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
-                                        val params : MutableMap<String, String> = HashMap()
-                                        params["area"] = binding2.dialogEditArea.text.toString()
-                                        return params
-                                    }
-                                }
+                    val dialogBinding = DialogRegisterAreaBinding.inflate(layoutInflater)
 
-                                queue.add(registerAreaRequest)
-                            }
-                        })
-                        setNegativeButton("취소", DialogInterface.OnClickListener { dialog, id ->
-                            binding.areaFilterSpinner.setSelection(spinnerAdapter.count)
-                        })
-                        setCancelable(false)
+                    val dialog = AlertDialog.Builder(areaActivity).run{
+                        setView(dialogBinding.root)
+                        setCancelable(true)
                         show()
+                    }
+
+                    dialog.window!!.setLayout(850, WindowManager.LayoutParams.WRAP_CONTENT)
+                    dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                    dialogBinding.cancelButton.setOnClickListener {
+                        dialog.dismiss()
+                    }
+
+                    dialogBinding.addBtn.setOnClickListener {
+                        if(dialogBinding.dialogEditArea.text.trim().toString() == ""){
+                            Toast.makeText(areaActivity, "추가하려는 구역을 입력해주세요.", Toast.LENGTH_LONG).show()
+                        }
+                        else{
+                            val registerAreaRequest = object : StringRequest(
+                                Request.Method.POST,
+                                BuildConfig.API_KEY+"register_area.php",
+                                Response.Listener<String>{ response ->
+                                    if(response.toString().equals("-1")){ // 추가하려는 구역이 이미 존재하는 경우
+                                        Toast.makeText(areaActivity, "이미 존재하는 구역입니다.", Toast.LENGTH_LONG).show()
+                                    }
+                                    else if(response.equals("1")){ // 정상 추가 성공
+                                        readArea()
+                                        Toast.makeText(areaActivity, "구역이 추가되었습니다.", Toast.LENGTH_LONG).show()
+                                        dialog.dismiss()
+                                    }
+                                },
+                                Response.ErrorListener { error ->
+                                    Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+                                }){
+                                override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
+                                    val params : MutableMap<String, String> = HashMap()
+                                    params["area"] = dialogBinding.dialogEditArea.text.toString()
+                                    return params
+                                }
+                            }
+
+                            queue.add(registerAreaRequest)
+                        }
                     }
                 }
                 else if(p2 != spinnerAdapter.count){

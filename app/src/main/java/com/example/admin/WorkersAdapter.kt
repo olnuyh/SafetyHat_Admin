@@ -44,11 +44,19 @@ class WorkersAdapter(val context : Context, var arr : JSONArray) : RecyclerView.
         }
         else if(status == 1){
             binding.itemAttendance.text = "근무중"
-            binding.itemAttendance.setTextColor(Color.parseColor("#47C83E"))
+            binding.itemAttendance.setTextColor(Color.parseColor("#019839"))
         }
         else if(status == 2){
             binding.itemAttendance.text = "퇴근"
-            binding.itemAttendance.setTextColor(Color.MAGENTA)
+            binding.itemAttendance.setTextColor(Color.BLACK)
+        }
+        else if(status == 3){
+            binding.itemAttendance.text = "근무중"
+            binding.itemAttendance.setTextColor(Color.parseColor("#F58D34"))
+        }
+        else if(status == 4){
+            binding.itemAttendance.text = "결근"
+            binding.itemAttendance.setTextColor(Color.parseColor("#E44747"))
         }
 
         if(area.equals("0")){
@@ -97,7 +105,8 @@ class WorkersAdapter(val context : Context, var arr : JSONArray) : RecyclerView.
                 if(area.equals("0")){
                     area = "-"
                 }
-                if (area.equals(searchText)) {
+
+                if (area.trim().equals(searchText[0].toString())) {
                     workerList.put(worker)
                 }
             }

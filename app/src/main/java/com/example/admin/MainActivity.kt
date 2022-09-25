@@ -112,16 +112,17 @@ class MainActivity : AppCompatActivity() {
             BuildConfig.API_KEY + "read_area_list.php",
             null,
             Response.Listener<JSONArray> { response ->
+                MyApplication.areaList.clear()
                 MyApplication.areaList.add("-")
 
                 for (i in 0 until response.length()){
                     val obj = response[i] as JSONObject
-                    val name = obj.getString("area_name")
+                    val name = obj.getString("area_name") + "구역"
                     MyApplication.areaList.add(name)
                 }
 
                 MyApplication.areaList.add("+ 추가")
-                MyApplication.areaList.add("구역을 선택하세요.")
+                MyApplication.areaList.add("구역")
             },
             Response.ErrorListener { error ->
                 Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
