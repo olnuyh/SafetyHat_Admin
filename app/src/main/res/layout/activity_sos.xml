@@ -51,7 +51,7 @@
             android:id="@+id/sosRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="550dp"
-            android:layout_marginTop="32.5dp"
+            android:layout_marginTop="25dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -63,13 +63,13 @@
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:id="@+id/main_drawer_view"
+        android:id="@+id/sos_drawer_view"
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/navigation_menu"
         app:itemIconTint="#7e84a3"
         app:itemTextColor="#99000000"
-        app:itemTextAppearance="@font/robotomedium">
+        app:itemTextAppearance="@style/navigation_item_font">
 
         <LinearLayout
             android:layout_width="match_parent"

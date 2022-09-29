@@ -45,7 +45,7 @@
 
     <EditText
         android:id="@+id/writeNotificationTitle"
-        android:layout_width="300dp"
+        android:layout_width="340dp"
         android:layout_height="40dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/stroke_round"
@@ -54,7 +54,7 @@
         android:inputType="textPersonName"
         android:lineSpacingExtra="6sp"
         android:paddingLeft="13dp"
-        android:textColor="#5a607f"
+        android:textColor="#de000000"
         android:textSize="14sp"
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,33 +63,32 @@
 
     <EditText
         android:id="@+id/writeNotificationContents"
-        android:layout_width="300dp"
+        android:layout_width="340dp"
         android:layout_height="300dp"
-        android:layout_marginTop="22dp"
-        android:hint="내용"
-        android:gravity="top"
-        android:textStyle="normal"
-        android:textSize="14sp"
-        android:textColor="#5a607f"
-        android:lineSpacingExtra="6sp"
+        android:layout_marginTop="250dp"
         android:fontFamily="@font/a12"
-        android:paddingLeft="13dp"
-        android:paddingTop="13.5dp"
-        android:inputType="textPersonName"
         android:background="@drawable/stroke_round"
-        app:layout_constraintStart_toStartOf="@+id/writeNotificationTitle"
-        app:layout_constraintTop_toBottomOf="@+id/writeNotificationTitle" />
+        android:gravity="left"
+        android:hint="내용"
+        android:lineSpacingExtra="6sp"
+        android:textColor="#de000000"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageButton
         android:id="@+id/registerNotificationBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:background="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#ffffff"
-        app:srcCompat="@drawable/ok_mint_btn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="95dp"/>
+        app:layout_constraintTop_toBottomOf="@+id/writeNotificationContents"
+        app:srcCompat="@drawable/ok_mint_btn" />
 
     <TextView
         android:id="@+id/okBtn"

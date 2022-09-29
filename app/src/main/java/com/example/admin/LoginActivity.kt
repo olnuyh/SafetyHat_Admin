@@ -35,7 +35,8 @@ class LoginActivity : AppCompatActivity() {
 
         val auto_loginPkey = MyApplication.prefs.getString("admin_pkey", "")
 
-        if(!auto_loginPkey.equals("")){ // 자동 로그인
+
+        if(!auto_loginPkey.isEmpty()){ // 자동 로그인
             Toast.makeText(this, "자동 로그인 성공하였습니다.", Toast.LENGTH_LONG).show()
             finish()
 
@@ -43,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
         else{
+
             binding.loginBtn.setOnClickListener {
                 val integrator = IntentIntegrator(this)
                 integrator.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE) // 여러가지 바코드중에 특정 바코드 설정 가능

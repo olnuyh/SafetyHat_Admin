@@ -5,6 +5,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -111,16 +112,17 @@ class MainActivity : AppCompatActivity() {
             BuildConfig.API_KEY + "read_area_list.php",
             null,
             Response.Listener<JSONArray> { response ->
+                MyApplication.areaList.clear()
                 MyApplication.areaList.add("-")
 
                 for (i in 0 until response.length()){
                     val obj = response[i] as JSONObject
-                    val name = obj.getString("area_name")
+                    val name = obj.getString("area_name") + "구역"
                     MyApplication.areaList.add(name)
                 }
 
                 MyApplication.areaList.add("+ 추가")
-                MyApplication.areaList.add("구역을 선택하세요.")
+                MyApplication.areaList.add("구역")
             },
             Response.ErrorListener { error ->
                 Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
@@ -142,8 +144,9 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "이름 가져오기 실패", Toast.LENGTH_LONG).show()
                 }
                 else {
+                    MyApplication.prefs.setString("admin_name", response)
                     val navName : TextView = headerView.findViewById(R.id.navigationName)
-                    navName.text=response.toString()
+                    navName.text=MyApplication.prefs.getString("admin_name", "") + " 관리자"
                 }
 
             },
@@ -159,6 +162,10 @@ class MainActivity : AppCompatActivity() {
         }
         val queue3 = Volley.newRequestQueue(this)
         queue3.add(mainRequest)
+
+        headerView.findViewById<ImageButton>(R.id.navigationCancel).setOnClickListener {
+            binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        }
 
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(this)
 

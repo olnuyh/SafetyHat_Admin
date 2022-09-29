@@ -2,8 +2,12 @@ package com.example.admin
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -35,7 +39,7 @@ class SosActivity : AppCompatActivity(){
         supportActionBar?.setDisplayShowTitleEnabled(false)
         toggle.syncState()
 
-        binding.mainDrawerView.setNavigationItemSelectedListener {
+        binding.sosDrawerView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.menuSos -> {
                     val intent = Intent(this, SosActivity::class.java)
@@ -65,6 +69,13 @@ class SosActivity : AppCompatActivity(){
             true
         }
 
+        val headerView = binding.sosDrawerView.getHeaderView(0)
+        headerView.findViewById<ImageButton>(R.id.navigationCancel).setOnClickListener {
+            binding.drawerLayout.closeDrawer(Gravity.LEFT)
+        }
+
+        headerView.findViewById<TextView>(R.id.navigationName).text=MyApplication.prefs.getString("admin_name", "") + " 관리자"
+
         binding.logout.setOnClickListener {
             MyApplication.prefs.clear()
             val intent = Intent(this, LoginActivity::class.java)
@@ -92,14 +103,16 @@ class SosActivity : AppCompatActivity(){
                     messageList.add(message_before!!)
                 }
 
-                if(!messageList.get(messageList.size - 1).isRead){
-                    ref.updateChildren(readCheckMap).addOnCompleteListener {
+                if(messageList.size != 0){
+                    if(!messageList.get(messageList.size - 1).isRead){
+                        ref.updateChildren(readCheckMap).addOnCompleteListener {
+                            adapter.notifyDataSetChanged()
+                            binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
+                        }
+                    }else{
                         adapter.notifyDataSetChanged()
                         binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
                     }
-                }else{
-                    adapter.notifyDataSetChanged()
-                    binding.sosRecyclerView.scrollToPosition(messageList.size - 1)
                 }
             }
 

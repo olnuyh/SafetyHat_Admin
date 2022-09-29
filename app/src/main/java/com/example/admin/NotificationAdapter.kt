@@ -1,7 +1,10 @@
 package com.example.admin
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
@@ -18,6 +21,7 @@ import com.example.admin.databinding.ItemNotificationBinding
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
+
 
 class NotificationViewHolder(val binding : ItemNotificationBinding) : RecyclerView.ViewHolder(binding.root)
 class NotificationAdapter(val context : Context, val arr : JSONArray) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -41,25 +45,28 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
         val notification = arr[position] as JSONObject
         binding.itemTitle.text = notification.getString("notification_title")
         binding.itemContent.text = notification.getString("notification_contents")
-        binding.itemName.text="관리자 "+notification.getString("notification_writer")
+        binding.itemName.text="관리자 "+ notification.getString("notification_writer")
 
         val insert_date = SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(notification.getString("insert_date"))
         val date = SimpleDateFormat("yyyy.MM.dd").format(insert_date)
 
         binding.itemDate.text=date
 
+        if(notification.getString("notification_writer").equals(MyApplication.prefs.getString("admin_name", ""))){
+            binding.deleteImg.visibility = View.VISIBLE
+        }
+
         binding.deleteImg.setOnClickListener {
             val dialog = Dialog(context)
             dialog.setContentView(R.layout.dialog_notification_delete)
             dialog.setCanceledOnTouchOutside(true)
             dialog.setCancelable(true)
+            dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
             val okBtn = dialog.findViewById<ImageButton>(R.id.okButton)
             val cancelBtn = dialog.findViewById<ImageButton>(R.id.cancelButton)
 
             okBtn.setOnClickListener {
-                arr.remove(holder.position)
-                notifyDataSetChanged()
                 dialog.dismiss()
 
                 val notificationTitle = binding.itemTitle.text.toString()
@@ -68,7 +75,11 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
                     BuildConfig.API_KEY + "delete_notification.php",
                     Response.Listener<String> { response ->
                         if (response.toString().equals("1")) { // 공지사항 삭제 성공
-
+                            val intent = (context as Activity).intent
+                            context.finish() //현재 액티비티 종료 실시
+                            context.overridePendingTransition(0, 0) //효과 없애기
+                            context.startActivity(intent) //현재 액티비티 재실행 실시
+                            context.overridePendingTransition(0, 0) //효과 없애기
                         }
                     },
                     Response.ErrorListener { error ->

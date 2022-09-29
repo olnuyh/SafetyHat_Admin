@@ -19,7 +19,7 @@
         android:id="@+id/mainSosMessageName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:text="이름"
         android:textSize="15sp"
         android:fontFamily="@font/a13"

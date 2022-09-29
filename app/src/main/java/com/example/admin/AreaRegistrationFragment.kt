@@ -3,13 +3,13 @@ package com.example.admin
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
@@ -23,6 +23,8 @@ import com.android.volley.Response
 import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.admin.databinding.DialogRegisterAreaBinding
+import com.example.admin.databinding.DialogRegisterWorkBinding
 import com.example.admin.databinding.FragmentAreaRegistrationBinding
 import org.json.JSONArray
 import org.json.JSONObject
@@ -44,6 +46,7 @@ class AreaRegistrationFragment : Fragment() {
     lateinit var area : ArrayList<String>
     lateinit var areaSelected : String
     lateinit var binding : FragmentAreaRegistrationBinding
+    lateinit var spinnerAdapter : ArrayAdapter<String>
 
     fun readArea(){
         val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
@@ -57,12 +60,29 @@ class AreaRegistrationFragment : Fragment() {
                     val name = obj.getString("area_name")
                     area.add(name)
                 }
+                area.add("")
 
-                val spinnerAdapter:ArrayAdapter<String> = object: ArrayAdapter<String>(
+                spinnerAdapter = object: ArrayAdapter<String>(
                     areaActivity,
                     android.R.layout.simple_spinner_dropdown_item,
                     area
                 ){
+                    override fun getView(
+                        position: Int,
+                        convertView: View?,
+                        parent: ViewGroup
+                    ): View {
+                        val view: TextView = super.getView(
+                            position,
+                            convertView,
+                            parent
+                        ) as TextView
+
+                        view.textAlignment = View.TEXT_ALIGNMENT_CENTER
+
+                        return view
+                    }
+
                     override fun getDropDownView(
                         position: Int,
                         convertView: View?,
@@ -90,9 +110,14 @@ class AreaRegistrationFragment : Fragment() {
                         view.textAlignment = View.TEXT_ALIGNMENT_CENTER
                         return view
                     }
+
+                    override fun getCount(): Int {
+                        return super.getCount() - 1
+                    }
                 }
 
                 binding.areaSpinner.adapter = spinnerAdapter
+                binding.areaSpinner.setSelection(spinnerAdapter.count)
             },
             Response.ErrorListener { error ->
                 Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
@@ -136,7 +161,8 @@ class AreaRegistrationFragment : Fragment() {
         binding = FragmentAreaRegistrationBinding.inflate(layoutInflater, container, false)
 
         binding.readWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
-        binding.readWorkersRecyclerView.adapter = AreaAdapter(areaActivity, MyApplication.workers)
+        val adapter = AreaAdapter(areaActivity, MyApplication.workers)
+        binding.readWorkersRecyclerView.adapter = adapter
         binding.readWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
 
         readArea()
@@ -151,15 +177,20 @@ class AreaRegistrationFragment : Fragment() {
             }
         }
 
+        binding.searchBtn.setOnClickListener {
+            val searchText = binding.searchText.text.toString()
+            adapter.filter(searchText)
+            binding.searchText.text = null
+        }
+
         binding.registerWorkBtn.setOnClickListener {
             val startHour = binding.startHour.text.toString()
             val startMinutes = binding.startMinutes.text.toString()
             val endHour = binding.endHour.text.toString()
             val endMinutes = binding.endMinutes.text.toString()
 
-            if(areaSelected.equals("구역선택")){
+            if(areaSelected.equals("")){
                 Toast.makeText(areaActivity, "구역을 선택해주세요.", Toast.LENGTH_SHORT).show()
-                //Toast.makeText(areaActivity, areaSelected, Toast.LENGTH_SHORT).show()
             }
             else if(startHour.equals("") || startMinutes.equals("")){
                 Toast.makeText(areaActivity, "시작 시간을 입력해주세요", Toast.LENGTH_SHORT).show()
@@ -187,7 +218,6 @@ class AreaRegistrationFragment : Fragment() {
 
                             resultArray.put(resultObj)
 
-                            Log.d("mobileApp", MyApplication.workerList[i].id)
                             MyApplication.workerList[i].isChecked = false
                         }
                     }
@@ -196,56 +226,64 @@ class AreaRegistrationFragment : Fragment() {
                         Toast.makeText(areaActivity, "근무자를 선택해주세요.", Toast.LENGTH_LONG).show()
                     }
                     else{
-                        val builder = AlertDialog.Builder(areaActivity)
-                        builder.setTitle("등록 확인")
-                            .setMessage("등록하시겠습니까?")
-                            .setPositiveButton("확인",
-                                DialogInterface.OnClickListener { dialog, id ->
-                                    val areaRegistrationRequest = object : StringRequest(
+                        val dialogBinding = DialogRegisterWorkBinding.inflate(layoutInflater)
+
+                        val dialog = AlertDialog.Builder(areaActivity).run{
+                            setView(dialogBinding.root)
+                            setCancelable(true)
+                            show()
+                        }
+
+                        dialog.window!!.setLayout(850, WindowManager.LayoutParams.WRAP_CONTENT)
+                        dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+                        dialogBinding.cancelButton.setOnClickListener {
+                            dialog.dismiss()
+                        }
+
+                        dialogBinding.registerWorkBtn.setOnClickListener {
+                            val areaRegistrationRequest = object : StringRequest(
+                                Request.Method.POST,
+                                BuildConfig.API_KEY+"register_work.php",
+                                Response.Listener<String>{ response ->
+                                    val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
                                         Request.Method.POST,
-                                        BuildConfig.API_KEY+"register_work.php",
-                                        Response.Listener<String>{ response ->
-                                            val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-                                                Request.Method.POST,
-                                                BuildConfig.API_KEY + "read_workers.php",
-                                                null,
-                                                Response.Listener<JSONArray> { response ->
-                                                    binding.readWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
-                                                    binding.readWorkersRecyclerView.adapter = AreaAdapter(areaActivity, response)
-                                                    binding.readWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
-                                                },
-                                                Response.ErrorListener { error ->
-                                                    Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-                                                }
-                                            )
-
-                                            val queue = Volley.newRequestQueue(areaActivity)
-                                            queue.add(readWorkersRequest)
-
-                                            binding.areaSpinner.setSelection(0)
-                                            binding.startHour.text = null
-                                            binding.startMinutes.text = null
-                                            binding.endHour.text = null
-                                            binding.endMinutes.text = null
-                                            Toast.makeText(areaActivity, "등록되었습니다.", Toast.LENGTH_LONG).show()
+                                        BuildConfig.API_KEY + "read_workers.php",
+                                        null,
+                                        Response.Listener<JSONArray> { response ->
+                                            binding.readWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
+                                            binding.readWorkersRecyclerView.adapter = AreaAdapter(areaActivity, response)
+                                            binding.readWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
                                         },
                                         Response.ErrorListener { error ->
                                             Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-                                        }){
-                                        override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
-                                            val params : MutableMap<String, String> = HashMap()
-                                            params["worker"] = resultArray.toString()
-                                            return params
                                         }
-                                    }
+                                    )
 
                                     val queue = Volley.newRequestQueue(areaActivity)
-                                    queue.add(areaRegistrationRequest)
-                                })
-                            .setNegativeButton("취소",
-                                DialogInterface.OnClickListener { dialog, id ->
-                                })
-                        builder.show()
+                                    queue.add(readWorkersRequest)
+
+                                    binding.areaSpinner.setSelection(spinnerAdapter.count)
+                                    binding.startHour.text = null
+                                    binding.startMinutes.text = null
+                                    binding.endHour.text = null
+                                    binding.endMinutes.text = null
+                                    Toast.makeText(areaActivity, "작업이 등록되었습니다.", Toast.LENGTH_LONG).show()
+                                    dialog.dismiss()
+                                },
+                                Response.ErrorListener { error ->
+                                    Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+                                }){
+                                override fun getParams(): MutableMap<String, String>? { // API로 전달할 데이터
+                                    val params : MutableMap<String, String> = HashMap()
+                                    params["worker"] = resultArray.toString()
+                                    return params
+                                }
+                            }
+
+                            val queue = Volley.newRequestQueue(areaActivity)
+                            queue.add(areaRegistrationRequest)
+                        }
                     }
                 }
 
