@@ -203,7 +203,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-30dp"
         android:text="확인"
-        android:fontFamily="@font/a14"
+        android:fontFamily="@font/a13"
         android:textColor="#de000000"
         android:textSize="17sp"
         android:textStyle="normal"

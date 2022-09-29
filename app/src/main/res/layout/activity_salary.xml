@@ -28,6 +28,7 @@
             android:layout_marginTop="42dp"
             android:text="근무자   월 급여"
             android:textSize="17sp"
+            android:fontFamily="@font/a14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolBar" />
@@ -69,6 +70,7 @@
                 android:layout_height="32.5dp"
                 android:layout_weight="1"
                 android:background="@drawable/graph_stroke"
+                android:fontFamily="@font/a12"
                 android:gravity="center"
                 android:layout_marginStart="15dp"
                 android:text="이름" />
@@ -78,6 +80,7 @@
                 android:layout_height="32.5dp"
                 android:layout_weight="1"
                 android:background="@drawable/graph_stroke"
+                android:fontFamily="@font/a12"
                 android:gravity="center"
                 android:text="사원번호" />
 
@@ -86,6 +89,7 @@
                 android:layout_height="32.5dp"
                 android:layout_weight="1"
                 android:background="@drawable/graph_stroke"
+                android:fontFamily="@font/a12"
                 android:gravity="center"
                 android:text="근무시간" />
 
@@ -94,6 +98,7 @@
                 android:layout_height="32.5dp"
                 android:layout_weight="1"
                 android:background="@drawable/graph_stroke"
+                android:fontFamily="@font/a12"
                 android:gravity="center"
                 android:layout_marginEnd="15dp"
                 android:text="총 합계" />

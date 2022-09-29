@@ -36,7 +36,7 @@
             android:lineSpacingExtra="8sp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="319dp"
-            android:fontFamily="@font/a15"
+            android:fontFamily="@font/a14"
             android:text="관리자 로그인"/>
 
         <TextView
