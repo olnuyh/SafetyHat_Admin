@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/a13"
-        android:text="등록"
+        android:text="확인"
         android:textColor="#de000000"
         android:textSize="17sp"
         android:textStyle="normal"
