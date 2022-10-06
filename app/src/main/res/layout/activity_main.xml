@@ -73,7 +73,7 @@
             android:fontFamily="@font/nanumsquare_round_b"
             android:gravity="center_horizontal"
             android:lineSpacingExtra="11sp"
-            android:text="숫자"
+            android:text="0"
             android:textColor="#FFFFFF"
             android:textSize="13sp"
             android:textStyle="bold"
