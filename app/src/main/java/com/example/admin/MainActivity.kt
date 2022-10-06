@@ -92,6 +92,11 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
+        binding.sosNumber.setOnClickListener {
+            val intent = Intent(this, SosActivity::class.java)
+            startActivity(intent)
+        }
+
         val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
             BuildConfig.API_KEY + "read_workers.php",
