@@ -25,13 +25,14 @@
             android:id="@+id/salaryTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="100dp"
+            android:fontFamily="@font/a14"
             android:text="근무자   월 급여"
             android:textSize="17sp"
-            android:fontFamily="@font/a12"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageButton
             android:id="@+id/title_leftbtn"
@@ -81,8 +82,8 @@
                 android:layout_height="32.5dp"
                 android:layout_weight="1"
                 android:background="@drawable/graph_stroke"
-                android:gravity="center"
                 android:fontFamily="@font/a12"
+                android:gravity="center"
                 android:textSize="13sp"
                 android:text="사원번호" />
 
@@ -91,8 +92,8 @@
                 android:layout_height="32.5dp"
                 android:layout_weight="1"
                 android:background="@drawable/graph_stroke"
-                android:gravity="center"
                 android:fontFamily="@font/a12"
+                android:gravity="center"
                 android:textSize="13sp"
                 android:text="근무시간" />
 
@@ -101,9 +102,9 @@
                 android:layout_height="32.5dp"
                 android:layout_weight="1"
                 android:background="@drawable/graph_stroke"
+                android:fontFamily="@font/a12"
                 android:gravity="center"
                 android:layout_marginEnd="15dp"
-                android:fontFamily="@font/a12"
                 android:textSize="13sp"
                 android:text="총 합계" />
         </LinearLayout>

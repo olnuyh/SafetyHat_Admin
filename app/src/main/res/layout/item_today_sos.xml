@@ -10,6 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:text="시간"
+        android:textSize="15sp"
+        android:fontFamily="@font/a12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="이름"
+        android:textSize="15sp"
+        android:fontFamily="@font/a13"
         app:layout_constraintStart_toEndOf="@+id/mainSosMessageTime"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +30,9 @@
         android:id="@+id/mainSosMessageContents"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="40dp"
+        android:textSize="15sp"
+        android:fontFamily="@font/a14"
         android:text="내용"
         app:layout_constraintStart_toEndOf="@+id/mainSosMessageName"
         app:layout_constraintTop_toTopOf="parent" />

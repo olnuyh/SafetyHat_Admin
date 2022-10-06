@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="319dp"
-            android:fontFamily="@font/a15"
+            android:fontFamily="@font/a14"
             android:letterSpacing="-0.02"
             android:lineSpacingExtra="8sp"
             android:text="관리자 로그인"
