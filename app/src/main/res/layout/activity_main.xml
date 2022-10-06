@@ -284,8 +284,8 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/navigation_header"
         app:menu="@menu/navigation_menu"
-        app:itemIconTint="#7e84a3"
-        app:itemTextColor="#99000000"
+        app:itemIconTint="#B5DDD9"
+        app:itemTextColor="#000000"
         app:itemTextAppearance="@style/navigation_item_font">
 
         <LinearLayout
@@ -301,7 +301,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#00ff0000"
-                android:drawableLeft="@drawable/logout_icon"
+                android:drawableLeft="@drawable/logout"
                 android:text="로그아웃"
                 android:fontFamily="@font/a12"
                 android:textStyle="normal"

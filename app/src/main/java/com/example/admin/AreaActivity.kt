@@ -10,6 +10,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -28,6 +29,7 @@ import org.json.JSONArray
 
 class AreaActivity : AppCompatActivity() {
     lateinit var toggle : ActionBarDrawerToggle
+    lateinit var binding : ActivityAreaBinding
 
     class FragmentAdapter(activity: FragmentActivity) : FragmentStateAdapter(activity){
         val fragments : List<Fragment>
@@ -46,7 +48,7 @@ class AreaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityAreaBinding.inflate(layoutInflater)
+        binding = ActivityAreaBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolBar)
 
@@ -130,5 +132,13 @@ class AreaActivity : AppCompatActivity() {
         val menuInflater = menuInflater
         menuInflater.inflate(R.menu.home,menu)
         return true
+    }
+
+    override fun onBackPressed() {
+        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            binding.drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
+        }
     }
 }
