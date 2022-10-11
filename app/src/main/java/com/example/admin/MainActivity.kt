@@ -46,8 +46,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        setSupportActionBar(binding.toolBar)
 
+        // 소켓 서비스 실행
+        val intent = Intent(this, ReceiverService::class.java)
+        baseContext.startService(intent)
+
+        setSupportActionBar(binding.toolBar)
 
         toggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.drawer_open, R.string.drawer_close)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -304,8 +308,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CctvActivity::class.java)
             startActivity(intent)
         }
-
-
     }
 
 
@@ -323,24 +325,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
-
-//     getFCMToken()
-//    private fun getFCMToken(): String?{
-//        var token: String? = null
-//        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
-//            if (!task.isSuccessful) {
-//                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-//                return@OnCompleteListener
-//            }
-//
-//            // Get new FCM registration token
-//            token = task.result
-//
-//            // Log and toast
-//            Log.d(TAG, "FCM Token is ${token}")
-//        })
-//
-//        return token
-//    }
+    override fun onDestroy() {
+        val intent = Intent(this, ReceiverService::class.java)
+        baseContext.stopService(intent)
+        super.onDestroy()
+    }
 }

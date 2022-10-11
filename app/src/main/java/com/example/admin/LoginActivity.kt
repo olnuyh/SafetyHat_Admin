@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //getFCMToken()
+        getFCMToken()
 
         val auto_loginPkey = MyApplication.prefs.getString("admin_pkey", "")
 

@@ -4,9 +4,11 @@ import android.app.Application
 import android.content.Context
 import android.util.SparseBooleanArray
 import org.json.JSONArray
+import java.net.Socket
 
 class MyApplication : Application() {
     companion object{
+        var socket: Socket?= null
         lateinit var prefs : SharedPreferencesManager
         lateinit var workers : JSONArray
         val workerList = arrayListOf<WorkerCheckStatus>()

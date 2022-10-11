@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Admin"
         android:usesCleartextTraffic="true">
+        <service
+            android:name=".ReceiverService"
+            android:enabled="true"
+            android:exported="true" />
         <activity
             android:name=".CctvAreaActivity"
             android:exported="false" />
