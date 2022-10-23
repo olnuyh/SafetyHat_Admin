@@ -82,7 +82,7 @@ class ReadNotificationActivity : AppCompatActivity() {
 
         val readNotificationRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.POST,
-            BuildConfig.API_KEY + "read_notification.php",
+            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_notification.php",
             null,
             Response.Listener<JSONArray> { response ->
                 binding.notificationRecyclerView.layoutManager = LinearLayoutManager(this)

@@ -30,7 +30,7 @@ class WriteNotificationActivity : AppCompatActivity() {
             else { // 모든 정보 입력 시
                 val registerNotificationRequest = object : StringRequest( // Volley를 이용한 http 통신
                     Request.Method.POST,
-                    BuildConfig.API_KEY + "write_notification.php",
+                     "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/write_notification.php",
                     Response.Listener<String> { response ->
                         if (response.toString().equals("1")) { // 공지사항 등록 성공
                             Toast.makeText(this, "공지사항이 등록되었습니다.", Toast.LENGTH_LONG).show()

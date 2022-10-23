@@ -117,7 +117,7 @@ class SalaryActivity : AppCompatActivity() {
     fun requestSalary(month : String){
         val salaryRequest = object : StringRequest( // Volley를 이용한 http 통신
             Request.Method.POST,
-            BuildConfig.API_KEY + "workers_salary.php",
+            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/workers_salary.php",
             Response.Listener<String> { response ->
                 val jsonObject : JSONObject = JSONObject(response)
                 val array = jsonObject.getJSONArray("response")

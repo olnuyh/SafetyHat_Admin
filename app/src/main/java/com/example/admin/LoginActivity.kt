@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
                 // Volley를 이용한 http 통신
                 val loginRequest = object : StringRequest(
                     Request.Method.POST,
-                    "http://ec2-3-36-64-224.ap-northeast-2.compute.amazonaws.com/admin_login.php",
+                    "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/admin_login.php",
                     Response.Listener<String>{ response ->
                         if(response.toString().equals("-1")){ // 로그인 실패
                             Toast.makeText(this, "등록된 관리자 QR코드가 아닙니다. 다시 시도해주세요.", Toast.LENGTH_LONG).show()

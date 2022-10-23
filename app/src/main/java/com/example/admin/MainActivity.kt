@@ -103,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
         val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
-            BuildConfig.API_KEY + "read_workers.php",
+            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_workers.php",
             null,
             Response.Listener<JSONArray> { response ->
                 MyApplication.workers = response
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
 
         val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
-            BuildConfig.API_KEY + "read_area_list.php",
+            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_area_list.php",
             null,
             Response.Listener<JSONArray> { response ->
                 MyApplication.areaList.clear()
@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity() {
 
         // 관리자 이름 가져오기
         val mainRequest = object : StringRequest(
-            Request.Method.POST, "http://ec2-3-36-64-224.ap-northeast-2.compute.amazonaws.com/admin_name.php",
+            Request.Method.POST, "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/admin_name.php",
             Response.Listener<String>{ response ->
                 if(response.toString().equals("-1")){
                     Toast.makeText(this, "이름 가져오기 실패", Toast.LENGTH_LONG).show()
