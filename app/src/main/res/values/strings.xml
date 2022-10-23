@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Admin</string>
+    <string name="app_name">안전햇 관리자용</string>
     <string name="drawer_open">OPEN</string>
     <string name="drawer_close">CLOSE</string>
     <string name="default_notification_channel_id">helmetalarm</string>

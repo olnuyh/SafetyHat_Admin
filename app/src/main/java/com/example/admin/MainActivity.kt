@@ -146,8 +146,7 @@ class MainActivity : AppCompatActivity() {
 
         // 관리자 이름 가져오기
         val mainRequest = object : StringRequest(
-            Request.Method.POST,
-            BuildConfig.API_KEY + "admin_name.php",
+            Request.Method.POST, "http://ec2-3-36-64-224.ap-northeast-2.compute.amazonaws.com/admin_name.php",
             Response.Listener<String>{ response ->
                 if(response.toString().equals("-1")){
                     Toast.makeText(this, "이름 가져오기 실패", Toast.LENGTH_LONG).show()

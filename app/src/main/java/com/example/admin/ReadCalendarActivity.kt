@@ -92,7 +92,7 @@ class ReadCalendarActivity : AppCompatActivity() {
             val calendaruploadRequest = @RequiresApi(Build.VERSION_CODES.M)
             object : StringRequest(
                 Request.Method.POST,
-                BuildConfig.API_KEY + "read_calendar.php",
+                BuildConfig.API_KEY + "read_schedule.php",
                 Response.Listener<String>{ response ->
 
                     val jsonObject : JSONObject = JSONObject(response)
@@ -109,7 +109,7 @@ class ReadCalendarActivity : AppCompatActivity() {
                             val layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
                             layoutParams.setMargins(130, 40, 0, 0)
                             textView.layoutParams = layoutParams
-                            textView.text = array.getJSONObject(i).getString("calendar_contents")
+                            textView.text = array.getJSONObject(i).getString("schedule_contents")
                             textView.setTextAppearance(R.style.calendar_text)
                             binding.scheduleLayout.addView(textView)
 
@@ -203,7 +203,7 @@ class ReadCalendarActivity : AppCompatActivity() {
                     // Volley를 이용한 http 통신
                     val writecalendarRequest = object : StringRequest(
                         Request.Method.POST,
-                        BuildConfig.API_KEY+"write_calendar.php",
+                        BuildConfig.API_KEY+"write_schedule.php",
                         Response.Listener<String>{ response ->
                             if(response.toString().equals("1")) { // 성공
                                 Toast.makeText(this, "일정이 등록되었습니다.", Toast.LENGTH_LONG).show()
