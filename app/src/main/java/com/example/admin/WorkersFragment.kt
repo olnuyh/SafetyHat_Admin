@@ -48,7 +48,7 @@ class WorkersFragment : Fragment(){
     fun readArea(){
         val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
-            BuildConfig.API_KEY + "read_area_list.php",
+            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_area_list.php",
             null,
             Response.Listener<JSONArray> { response ->
                 MyApplication.areaList.clear()
@@ -96,21 +96,6 @@ class WorkersFragment : Fragment(){
         // Inflate the layout for this fragment
         binding = FragmentWorkersBinding.inflate(inflater, container, false)
 
-        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-            Request.Method.GET,
-            BuildConfig.API_KEY + "read_workers.php",
-            null,
-            Response.Listener<JSONArray> { response ->
-                MyApplication.workers = response
-            },
-            Response.ErrorListener { error ->
-                Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
-            }
-        )
-
-        val queue = Volley.newRequestQueue(areaActivity)
-        queue.add(readWorkersRequest)
-
         binding.areaWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
         val adapter = WorkersAdapter(areaActivity, MyApplication.workers)
         binding.areaWorkersRecyclerView.adapter = adapter
@@ -124,7 +109,6 @@ class WorkersFragment : Fragment(){
         binding.searchBtn.setOnClickListener {
             val searchText = binding.searchText.text.toString()
             adapter.filter(searchText)
-            binding.searchText.text = null
         }
 
         spinnerAdapter = object : ArrayAdapter<String>(
@@ -187,7 +171,7 @@ class WorkersFragment : Fragment(){
                         dialogBinding.okButton.setOnClickListener {
                             val deleteAreaRequest = object : StringRequest(
                                 Request.Method.POST,
-                                BuildConfig.API_KEY + "delete_area.php",
+                                "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/delete_area.php",
                                 Response.Listener<String> { response ->
                                     readArea()
                                     Toast.makeText(
@@ -253,7 +237,7 @@ class WorkersFragment : Fragment(){
                         else{
                             val registerAreaRequest = object : StringRequest(
                                 Request.Method.POST,
-                                BuildConfig.API_KEY+"register_area.php",
+                                "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/register_area.php",
                                 Response.Listener<String>{ response ->
                                     if(response.toString().equals("-1")){ // 추가하려는 구역이 이미 존재하는 경우
                                         Toast.makeText(areaActivity, "이미 존재하는 구역입니다.", Toast.LENGTH_LONG).show()

@@ -105,49 +105,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/areaAbtn"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="75dp"
-            android:layout_marginTop="400dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/area_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/area_b_btn"
-            android:layout_width="120dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="400dp"
-            android:layout_marginEnd="75dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/area_btn"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/cctvarea_left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <HorizontalScrollView
+            android:id="@+id/areaScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
             android:layout_marginStart="42dp"
-            android:layout_marginTop="420dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/left_arrowbtn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/cctvarea_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="420dp"
+            android:layout_marginTop="400dp"
             android:layout_marginEnd="42dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/right_arrowbtn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/areaLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
 
         <TextView
             android:id="@+id/wearherTitle"
@@ -243,39 +220,6 @@
             android:text="공지사항"
             app:layout_constraintStart_toEndOf="@+id/mainCalendar"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/area_a"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/a14"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="7sp"
-            android:text="A구역"
-            android:textColor="#ffffff"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/areaAbtn"
-            app:layout_constraintStart_toStartOf="@+id/areaAbtn"
-            app:layout_constraintTop_toTopOf="@+id/areaAbtn" />
-
-        <TextView
-            android:id="@+id/area_b"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/a14"
-            android:gravity="center_horizontal"
-            android:lineSpacingExtra="7sp"
-            android:text="B구역"
-            android:textColor="#ffffff"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/area_b_btn"
-            app:layout_constraintStart_toStartOf="@+id/area_b_btn"
-            app:layout_constraintTop_toTopOf="@+id/area_b_btn" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

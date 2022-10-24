@@ -51,7 +51,7 @@ class AreaRegistrationFragment : Fragment() {
     fun readArea(){
         val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
-            BuildConfig.API_KEY + "read_area_list.php",
+            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_area_list.php",
             null,
             Response.Listener<JSONArray> { response ->
                 area = arrayListOf<String>()
@@ -180,7 +180,6 @@ class AreaRegistrationFragment : Fragment() {
         binding.searchBtn.setOnClickListener {
             val searchText = binding.searchText.text.toString()
             adapter.filter(searchText)
-            binding.searchText.text = null
         }
 
         binding.registerWorkBtn.setOnClickListener {
@@ -244,11 +243,11 @@ class AreaRegistrationFragment : Fragment() {
                         dialogBinding.registerWorkBtn.setOnClickListener {
                             val areaRegistrationRequest = object : StringRequest(
                                 Request.Method.POST,
-                                BuildConfig.API_KEY+"register_work.php",
+                                "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/register_work.php",
                                 Response.Listener<String>{ response ->
                                     val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
                                         Request.Method.POST,
-                                        BuildConfig.API_KEY + "read_workers.php",
+                                        "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_workers.php",
                                         null,
                                         Response.Listener<JSONArray> { response ->
                                             binding.readWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)

@@ -34,7 +34,17 @@ class SalaryAdapter (val context : Context, val arr : JSONArray) : RecyclerView.
 
         binding.itemName.text = salary.getString("worker_name")
         binding.itemEmplId.text = salary.getString("worker_id")
-        binding.itemWorkertime.text = (salary.getString("work_time").toInt() / 60).toString() + "시간"
-        binding.itemTotal.text = salary.getString("work_salary") + "원"
+        if(salary.getString("work_time") == "null"){
+            binding.itemWorkertime.text = "-시간"
+        }
+        else{
+            binding.itemWorkertime.text = (salary.getString("work_time").toInt() / 60).toString() + "시간"
+        }
+        if(salary.getString("work_salary") == "null"){
+            binding.itemTotal.text = "-원"
+        }
+        else{
+            binding.itemTotal.text = salary.getString("work_salary") + "원"
+        }
     }
 }

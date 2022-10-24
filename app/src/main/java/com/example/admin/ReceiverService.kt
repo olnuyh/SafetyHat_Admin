@@ -33,7 +33,7 @@ class ReceiverService : Service() {
     class ServerThread : Thread() {
         override fun run() {
             try {
-                socket = Socket("172.20.10.11", 6667)
+                socket = Socket("192.168.10.181", 6667)
                 bis = BufferedInputStream(socket?.getInputStream())
 
                 while(true){

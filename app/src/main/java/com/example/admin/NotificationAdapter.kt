@@ -72,7 +72,7 @@ class NotificationAdapter(val context : Context, val arr : JSONArray) : Recycler
                 val notificationTitle = binding.itemTitle.text.toString()
                 val deleteNotificationRequest = object : StringRequest( // Volley를 이용한 http 통신
                     Request.Method.POST,
-                    BuildConfig.API_KEY + "delete_notification.php",
+                    "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/delete_notification.php",
                     Response.Listener<String> { response ->
                         if (response.toString().equals("1")) { // 공지사항 삭제 성공
                             val intent = (context as Activity).intent

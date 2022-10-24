@@ -70,6 +70,8 @@
         android:background="@drawable/stroke_round"
         android:gravity="left"
         android:hint="내용"
+        android:paddingLeft="13dp"
+        android:paddingTop="13dp"
         android:lineSpacingExtra="6sp"
         android:textColor="#de000000"
         android:textSize="14sp"

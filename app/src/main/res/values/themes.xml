@@ -26,4 +26,19 @@
     <style name="calendar_text" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/a12</item>
     </style>
+
+    <style name="area_btn_text" parent="android:Widget.Button">
+        <item name="android:fontFamily">@font/a14</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="cctv_area_btn_text" parent="android:Widget.Button">
+        <item name="android:fontFamily">@font/a14</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 </resources>

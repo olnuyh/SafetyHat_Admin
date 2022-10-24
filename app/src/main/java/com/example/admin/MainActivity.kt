@@ -1,19 +1,20 @@
 package com.example.admin
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.MenuItem
-import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.core.view.setMargins
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.AuthFailureError
 import com.android.volley.Request
 import com.android.volley.Response
@@ -22,17 +23,17 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.bumptech.glide.Glide
 import com.example.admin.databinding.ActivityMainBinding
-import org.json.JSONArray
-import org.json.JSONObject
-import java.util.*
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import org.json.JSONArray
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var toggle : ActionBarDrawerToggle
@@ -42,6 +43,7 @@ class MainActivity : AppCompatActivity() {
     val messageList = ArrayList<SosMessage>()
     lateinit var adapter : TodaySosAdapter
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -128,6 +130,31 @@ class MainActivity : AppCompatActivity() {
                     val obj = response[i] as JSONObject
                     val name = obj.getString("area_name") + "구역"
                     MyApplication.areaList.add(name)
+
+                    val areaCctvBtn = Button(this)
+                    val width = TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        120f,
+                        resources.displayMetrics
+                    ).toInt()
+                    val height = TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        70f,
+                        resources.displayMetrics
+                    ).toInt()
+
+                    val layoutParams = LinearLayout.LayoutParams(width, height)
+                    layoutParams.setMargins(0, 0, 45, 0)
+                    areaCctvBtn.layoutParams = layoutParams
+                    areaCctvBtn.setBackgroundResource(R.drawable.area_btn)
+                    areaCctvBtn.text = name
+                    areaCctvBtn.setTextAppearance(R.style.area_btn_text)
+                    areaCctvBtn.setOnClickListener {
+                        val intent = Intent(this, CctvActivity::class.java)
+                        intent.putExtra("name", name)
+                        startActivity(intent)
+                    }
+                    binding.areaLayout.addView(areaCctvBtn)
                 }
 
                 MyApplication.areaList.add("+ 추가")
@@ -300,11 +327,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.mainNotification.setOnClickListener {
             val intent = Intent(this, ReadNotificationActivity::class.java)
-            startActivity(intent)
-        }
-
-        binding.areaAbtn.setOnClickListener{
-            val intent = Intent(this, CctvActivity::class.java)
             startActivity(intent)
         }
     }

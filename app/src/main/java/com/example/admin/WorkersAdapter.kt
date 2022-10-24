@@ -40,7 +40,7 @@ class WorkersAdapter(val context : Context, var arr : JSONArray) : RecyclerView.
 
         if(status == 0){
             binding.itemAttendance.text = "미출근"
-            binding.itemAttendance.setTextColor(Color.BLACK)
+            binding.itemAttendance.setTextColor(Color.parseColor("#939393"))
         }
         else if(status == 1){
             binding.itemAttendance.text = "근무중"

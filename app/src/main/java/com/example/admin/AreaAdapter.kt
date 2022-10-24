@@ -50,7 +50,7 @@ class AreaAdapter (val context : Context, val arr : JSONArray) : RecyclerView.Ad
 
         if(status == 0){
             binding.areaItemAttendance.text = "미출근"
-            binding.areaItemAttendance.setTextColor(Color.BLACK)
+            binding.areaItemAttendance.setTextColor(Color.parseColor("#939393"))
         }
         else if(status == 1){
             binding.areaItemAttendance.text = "근무중"
