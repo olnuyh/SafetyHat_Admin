@@ -165,6 +165,21 @@ class AreaRegistrationFragment : Fragment() {
         binding.readWorkersRecyclerView.adapter = adapter
         binding.readWorkersRecyclerView.addItemDecoration(DividerItemDecoration(areaActivity, LinearLayoutManager.VERTICAL))
 
+        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
+            Request.Method.GET,
+            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_workers.php",
+            null,
+            Response.Listener<JSONArray> { response ->
+                MyApplication.workers = response
+            },
+            Response.ErrorListener { error ->
+                Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+            }
+        )
+
+        val queue = Volley.newRequestQueue(areaActivity)
+        queue.add(readWorkersRequest)
+
         readArea()
 
         binding.areaSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{

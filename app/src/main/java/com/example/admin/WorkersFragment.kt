@@ -44,6 +44,7 @@ class WorkersFragment : Fragment(){
     lateinit var areaActivity: AreaActivity
     lateinit var binding : FragmentWorkersBinding
     lateinit var spinnerAdapter : ArrayAdapter<String>
+    lateinit var adapter : WorkersAdapter
 
     fun readArea(){
         val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
@@ -97,14 +98,29 @@ class WorkersFragment : Fragment(){
         binding = FragmentWorkersBinding.inflate(inflater, container, false)
 
         binding.areaWorkersRecyclerView.layoutManager = LinearLayoutManager(areaActivity)
-        val adapter = WorkersAdapter(areaActivity, MyApplication.workers)
-        binding.areaWorkersRecyclerView.adapter = adapter
-        binding.areaWorkersRecyclerView.addItemDecoration(
-            DividerItemDecoration(
-                areaActivity,
-                LinearLayoutManager.VERTICAL
+
+        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
+        Request.Method.GET,
+        "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_workers.php",
+        null,
+        Response.Listener<JSONArray> { response ->
+            MyApplication.workers = response
+            adapter = WorkersAdapter(areaActivity, response)
+            binding.areaWorkersRecyclerView.adapter = adapter
+            binding.areaWorkersRecyclerView.addItemDecoration(
+                DividerItemDecoration(
+                    areaActivity,
+                    LinearLayoutManager.VERTICAL
+                )
             )
+        },
+        Response.ErrorListener {
+                error -> Toast.makeText(areaActivity, error.toString(), Toast.LENGTH_LONG).show()
+        }
         )
+
+        val queue = Volley.newRequestQueue(areaActivity)
+        queue.add(readWorkersRequest)
 
         binding.searchBtn.setOnClickListener {
             val searchText = binding.searchText.text.toString()

@@ -103,21 +103,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        val readWorkersRequest = JsonArrayRequest( // Volley를 이용한 http 통신
-            Request.Method.GET,
-            "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_workers.php",
-            null,
-            Response.Listener<JSONArray> { response ->
-                MyApplication.workers = response
-            },
-            Response.ErrorListener { error ->
-                Toast.makeText(this, error.toString(), Toast.LENGTH_LONG).show()
-            }
-        )
-
-        val queue = Volley.newRequestQueue(this)
-        queue.add(readWorkersRequest)
-
         val readAreaRequest = JsonArrayRequest( // Volley를 이용한 http 통신
             Request.Method.GET,
             "http://ec2-15-165-242-180.ap-northeast-2.compute.amazonaws.com/read_area_list.php",
@@ -347,8 +332,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onDestroy() {
+        super.onDestroy()
         val intent = Intent(this, ReceiverService::class.java)
         baseContext.stopService(intent)
-        super.onDestroy()
     }
 }
