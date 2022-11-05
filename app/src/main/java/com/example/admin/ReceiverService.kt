@@ -33,7 +33,8 @@ class ReceiverService : Service() {
     class ServerThread : Thread() {
         override fun run() {
             try {
-                socket = Socket("192.168.1.11", 6667)
+                socket = Socket("172.20.10.11", 6667)
+                Log.d("mobileApp", socket.toString())
                 bis = BufferedInputStream(socket?.getInputStream())
 
                 while(true){
@@ -83,7 +84,8 @@ class ReceiverService : Service() {
             }catch (e:Exception){
                 e.printStackTrace()
             }finally {
-                socket?.close()
+                //socket = null
+                //Log.d("mobileApp", socket.toString())
             }
         }
 

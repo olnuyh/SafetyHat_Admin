@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.MenuItem
@@ -335,5 +336,8 @@ class MainActivity : AppCompatActivity() {
         super.onDestroy()
         val intent = Intent(this, ReceiverService::class.java)
         baseContext.stopService(intent)
+
+        MyApplication.socket = null
+        Log.d("mobileApp", MyApplication.socket.toString())
     }
 }
